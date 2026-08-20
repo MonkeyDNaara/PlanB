@@ -1,8 +1,12 @@
+import { Route, Routes } from "react-router-dom";
+
 function App() {
   return (
-    <>
-      <div>App</div>
-    </>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route />
+      </Route>
+    </Routes>
   );
 }
 
