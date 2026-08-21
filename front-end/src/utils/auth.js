@@ -41,25 +41,25 @@ const getCurrentUser = () => {
   return getSession()?.user ?? null;
 };
 
-const isTokenExpired = (token) => {
-  try {
-    const { exp } = JSON.parse(atob(token.split(".")[1]));
-    return !exp || Date.now() >= exp * 1000;
-  } catch (error) {
-    console.log(error);
-    return true;
-  }
-};
+// const isTokenExpired = (token) => {
+//   try {
+//     const { exp } = JSON.parse(atob(token.split(".")[1]));
+//     return !exp || Date.now() >= exp * 1000;
+//   } catch (error) {
+//     console.log(error);
+//     return true;
+//   }
+// };
 
 const isAuthenticated = () => {
   const token = getToken();
-  return Boolean(token) && !isTokenExpired(token);
+  return Boolean(token); //&& !isTokenExpired(token);
 };
 
 const registerUser = async (email, password) => {
-  const registeredUser = await apiRequest("/users", {
+  const { registeredUser } = await apiRequest("/users", {
     method: "POST",
-    body: JSON.stringify({ registerEmail: email, registerPassword: password }),
+    body: JSON.stringify({ email, password }),
   });
   return registeredUser;
 };

@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { AuthContext } from "./ThemeContext";
+import { ThemeContext } from "./ThemeContext";
 
 const ThemeContextProvider = ({ children }) => {
-  const [auth, setAuth] = useState(false);
+  const [theme, setTheme] = useState("light");
 
   return (
-    <AuthContext
+    <ThemeContext
       value={{
-        auth,
-        setAuth,
+        theme,
+        setTheme,
       }}
     >
       {children}
-    </AuthContext>
+    </ThemeContext>
   );
 };
 
