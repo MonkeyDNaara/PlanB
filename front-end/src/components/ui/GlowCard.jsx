@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { getCategoryTheme } from "../../../design/categoryTheme";
+import { getCategoryTheme } from "../../design/categoryTheme";
 
 function GlowCard({ category = "Other", children, className = "" }) {
   const theme = getCategoryTheme(category);

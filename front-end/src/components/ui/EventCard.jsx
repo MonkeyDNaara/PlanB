@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import CategoryBadge from "../CategoryBadge/CategoryBadge";
-import GlowCard from "../GlowCard/GlowCard";
-import { getCategoryTheme } from "../../../design/categoryTheme";
+import CategoryBadge from "./CategoryBadge";
+import GlowCard from "./GlowCard";
+import { getCategoryTheme } from "../../design/categoryTheme";
 
 function EventCard({
   title = "Untitled Event",
