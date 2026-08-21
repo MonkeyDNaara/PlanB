@@ -1,3 +1,4 @@
+@import "@fontsource/lobster/latin-400.css";
 @import "tailwindcss";
 
 :root {
@@ -27,6 +28,7 @@
 }
 
 @theme inline {
+  --font-evently-brand: "Lobster", cursive;
   --color-evently-bg: var(--evently-bg);
   --color-evently-bg-secondary: var(--evently-bg-secondary);
   --color-evently-surface: var(--evently-surface);
