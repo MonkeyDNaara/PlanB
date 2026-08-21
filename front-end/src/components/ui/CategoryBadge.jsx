@@ -1,4 +1,4 @@
-import { getCategoryTheme } from "../../../design/categoryTheme";
+import { getCategoryTheme } from "../../design/categoryTheme";
 
 function CategoryBadge({ category = "Other" }) {
   const theme = getCategoryTheme(category);
