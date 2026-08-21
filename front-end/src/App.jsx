@@ -1,4 +1,3 @@
-import DesignShowcase from "./design/DesignShowcase";
 import { Route, Routes } from "react-router-dom";
 import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
@@ -11,7 +10,6 @@ import NotFound from "./routes/NotFound";
 
 function App() {
   return (
-    <>
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<UpcomingEvents />} />
@@ -24,8 +22,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
-  <DesignShowcase />;
-        </>
   );
 }
 
