@@ -56,4 +56,19 @@ const isAuthenticated = () => {
   return Boolean(token) && !isTokenExpired(token);
 };
 
-export { login, logout, getToken, getCurrentUser, isAuthenticated };
+const registerUser = async (email, password) => {
+  const registeredUser = await apiRequest("/users", {
+    method: "POST",
+    body: JSON.stringify({ registerEmail: email, registerPassword: password }),
+  });
+  return registeredUser;
+};
+
+export {
+  login,
+  logout,
+  getToken,
+  getCurrentUser,
+  isAuthenticated,
+  registerUser,
+};
