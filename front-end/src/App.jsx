@@ -1,9 +1,7 @@
+import DesignShowcase from "./design/DesignShowcase";
+
 function App() {
-  return (
-    <>
-      <div>App</div>
-    </>
-  );
+  return <DesignShowcase />;
 }
 
 export default App;
