@@ -11,7 +11,12 @@ const apiRequest = async (path, options = {}) => {
 
   if (!response.ok) {
     const errorBody = await response.json().catch(() => null);
-    throw new Error(errorBody?.message ?? `Request failed with status ${response.status}`);
+
+    throw new Error(
+      errorBody?.error ??
+        errorBody?.message ??
+        `Request failed with status ${response.status}`,
+    );
   }
 
   if (response.status === 204) return null;
