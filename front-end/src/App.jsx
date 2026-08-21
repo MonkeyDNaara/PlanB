@@ -7,6 +7,7 @@ import EventCalender from "./routes/EventCalendar";
 import CreateEvent from "./routes/CreateEvent";
 import MainLayout from "./layouts/mainLayout";
 import NotFound from "./routes/NotFound";
+import EventDetails from "./routes/EventDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/eventlist" element={<EventList />} />
         <Route path="/eventcalendar" element={<EventCalender />} />
+        <Route path="/eventdetails/:eventId" element={<EventDetails />} />
         <Route path="/createevent" element={<CreateEvent />} />
         {/* ^ protected Route */}
         <Route path="*" element={<NotFound />} />
