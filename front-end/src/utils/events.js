@@ -4,6 +4,10 @@ const fetchEvents = () => {
   return apiRequest("/events");
 };
 
+const fetchUpcomingEvents = () => {
+  return apiRequest("/events/upcoming");
+};
+
 const createEvent = (event, token) => {
   return apiRequest("/events", {
     method: "POST",
@@ -12,4 +16,4 @@ const createEvent = (event, token) => {
   });
 };
 
-export { fetchEvents, createEvent };
+export { fetchEvents, createEvent, fetchUpcomingEvents };
