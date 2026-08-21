@@ -1,129 +1,79 @@
-import { useState } from 'react';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
-import SoundToggle from '../SoundToggle/SoundToggle';
+import { useState } from "react";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import SoundToggle from "../SoundToggle/SoundToggle";
+
+const navLinkClass =
+  "block rounded-lg px-3 py-2 text-sm font-medium text-evently-text-secondary transition-colors duration-200 hover:bg-white/[0.04] hover:text-evently-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary/60";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [hamburgerFocused, setHamburgerFocused] = useState(false);
-
-  const navStyle = {
-    background: 'linear-gradient(180deg, #071018 0%, #0b1220 100%)',
-    color: '#e6eef8',
-    borderBottom: '1px solid rgba(255,255,255,0.04)',
-    boxShadow: '0 1px 0 rgba(255,255,255,0.02) inset',
-  };
-
-  const containerStyle = {
-    maxWidth: 1200,
-    margin: '0 auto',
-    padding: '0.5rem 1rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  };
-
-  const hamburgerBase = {
-    background: 'transparent',
-    border: 'none',
-    color: 'inherit',
-    fontSize: 20,
-    cursor: 'pointer',
-    padding: 6,
-    borderRadius: 8,
-    transition: 'background 120ms ease, box-shadow 120ms ease, transform 120ms ease',
-  };
-
-  const hamburgerHover = hamburgerFocused
-    ? { background: 'rgba(255,255,255,0.03)', boxShadow: '0 0 0 3px rgba(124,58,237,0.12)' }
-    : { background: 'transparent' };
 
   return (
-    <nav style={navStyle} aria-label="Hauptnavigation">
-      <div style={containerStyle}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+    <nav
+      className="sticky top-0 z-50 border-b border-evently-border bg-evently-bg-secondary/90 text-evently-text shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] backdrop-blur-xl"
+      aria-label="Hauptnavigation"
+    >
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-2">
+        <div className="flex items-center gap-4">
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
+            type="button"
+            onClick={() => setMobileOpen((open) => !open)}
             aria-expanded={mobileOpen}
-            aria-label={mobileOpen ? 'Menü schließen' : 'Menü öffnen'}
-            onFocus={() => setHamburgerFocused(true)}
-            onBlur={() => setHamburgerFocused(false)}
-            style={{ ...hamburgerBase, ...hamburgerHover }}
+            aria-controls="evently-mobile-navigation"
+            aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
+            className="rounded-lg p-2 text-evently-text transition-all duration-200 hover:bg-white/[0.04] hover:shadow-[0_0_0_3px_var(--evently-primary-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary/60 md:hidden"
           >
-            {/* simple hamburger */}
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
+            <svg
+              className="h-7 w-7"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </button>
 
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: 'inherit' }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'linear-gradient(135deg,#7c3aed,#06b6d4)' }} aria-hidden />
-            <span style={{ fontWeight: 700, letterSpacing: 0.2 }}>EVENTLY</span>
-            <span style={{ opacity: 0.8, fontSize: 12, marginLeft: 6 }}>Dark</span>
+          <a
+            href="#top"
+            className="flex items-center gap-2 rounded-lg text-evently-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary/60"
+          >
+            <span
+              className="h-9 w-9 rounded-lg bg-gradient-to-br from-violet-600 to-cyan-500 shadow-[0_0_24px_rgba(124,92,255,0.24)]"
+              aria-hidden="true"
+            />
+            <span className="font-bold tracking-wide">EVENTLY</span>
+            <span className="ml-1 hidden text-xs text-evently-muted sm:inline">Premium</span>
           </a>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <ul style={{ display: 'flex', gap: '0.5rem', listStyle: 'none', padding: 0, margin: 0 }}>
-            <li>
-              <a
-                href="#events"
-                style={{ color: 'inherit', textDecoration: 'none', padding: '0.4rem 0.6rem', borderRadius: 6, transition: 'background 120ms ease' }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-              >
-                Events
-              </a>
-            </li>
-            <li>
-              <a
-                href="#calendar"
-                style={{ color: 'inherit', textDecoration: 'none', padding: '0.4rem 0.6rem', borderRadius: 6, transition: 'background 120ms ease' }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-              >
-                Calendar
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                style={{ color: 'inherit', textDecoration: 'none', padding: '0.4rem 0.6rem', borderRadius: 6, transition: 'background 120ms ease' }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-              >
-                About
-              </a>
-            </li>
+        <div className="flex items-center gap-3">
+          <ul className="hidden items-center gap-1 md:flex">
+            <li><a href="#events" className={navLinkClass}>Events</a></li>
+            <li><a href="#calendar" className={navLinkClass}>Kalender</a></li>
+            <li><a href="#about" className={navLinkClass}>Über uns</a></li>
           </ul>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div className="flex items-center gap-2">
             <ThemeToggle />
             <SoundToggle />
           </div>
         </div>
       </div>
 
-      {/* Mobile drawer */}
       {mobileOpen && (
-        <div style={{ padding: '0.5rem 1rem', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <li>
-              <a href="#events" style={{ color: 'inherit', textDecoration: 'none', padding: '0.5rem', borderRadius: 6, display: 'block' }}>
-                Events
-              </a>
-            </li>
-            <li>
-              <a href="#calendar" style={{ color: 'inherit', textDecoration: 'none', padding: '0.5rem', borderRadius: 6, display: 'block' }}>
-                Calendar
-              </a>
-            </li>
-            <li>
-              <a href="#about" style={{ color: 'inherit', textDecoration: 'none', padding: '0.5rem', borderRadius: 6, display: 'block' }}>
-                About
-              </a>
-            </li>
+        <div
+          id="evently-mobile-navigation"
+          className="border-t border-evently-border px-4 py-3 md:hidden"
+        >
+          <ul className="flex flex-col gap-1">
+            <li><a href="#events" className={navLinkClass}>Events</a></li>
+            <li><a href="#calendar" className={navLinkClass}>Kalender</a></li>
+            <li><a href="#about" className={navLinkClass}>Über uns</a></li>
           </ul>
         </div>
       )}

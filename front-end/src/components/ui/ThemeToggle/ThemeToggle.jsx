@@ -1,47 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
+
+const toggleClass =
+  "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-evently-border bg-white/[0.02] text-evently-text-secondary transition-all duration-200 hover:-translate-y-0.5 hover:border-evently-primary/40 hover:text-evently-text hover:shadow-[0_0_20px_var(--evently-primary-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary/60";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // apply dark theme class to html for global styles
-    if (isDark) document.documentElement.classList.add('theme-dark');
-    else document.documentElement.classList.remove('theme-dark');
+    document.documentElement.classList.toggle("theme-dark", isDark);
   }, [isDark]);
-
-  const btnStyle = {
-    background: 'linear-gradient(90deg, rgba(255,255,255,0.02), transparent)',
-    border: '1px solid rgba(255,255,255,0.06)',
-    padding: '6px 8px',
-    borderRadius: 8,
-    color: 'inherit',
-    cursor: 'pointer',
-    transition: 'transform 140ms ease, box-shadow 140ms ease',
-  };
 
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
+      type="button"
+      onClick={() => setIsDark((value) => !value)}
       aria-pressed={isDark}
-      aria-label={isDark ? 'Wechsel zu hellem Theme' : 'Wechsel zu dunklem Theme'}
-      style={btnStyle}
-      title={isDark ? 'Dark Theme aktiv' : 'Light Theme aktiv'}
+      aria-label={isDark ? "Zum hellen Theme wechseln" : "Zum dunklen Theme wechseln"}
+      className={toggleClass}
+      title={isDark ? "Dark Theme aktiv" : "Light Theme aktiv"}
     >
       {isDark ? (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        <svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       ) : (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2"></path>
-          <path d="M12 20v2"></path>
-          <path d="M4.93 4.93l1.41 1.41"></path>
-          <path d="M17.66 17.66l1.41 1.41"></path>
-          <path d="M2 12h2"></path>
-          <path d="M20 12h2"></path>
-          <path d="M4.93 19.07l1.41-1.41"></path>
-          <path d="M17.66 6.34l1.41-1.41"></path>
+        <svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
         </svg>
       )}
     </button>
