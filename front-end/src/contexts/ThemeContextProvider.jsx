@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ThemeContext } from "./ThemeContext";
 
 const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState("gedankensalat");
+  const [theme, setTheme] = useState("light");
 
   return (
     <ThemeContext
