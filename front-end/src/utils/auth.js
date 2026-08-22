@@ -59,7 +59,7 @@ const isAuthenticated = () => {
 const registerUser = async (email, password) => {
   const registeredUser = await apiRequest("/users", {
     method: "POST",
-    body: JSON.stringify({ registerEmail: email, registerPassword: password }),
+    body: JSON.stringify({ email: email, password: password }),
   });
   return registeredUser;
 };
