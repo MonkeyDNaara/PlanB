@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { AuthContext } from "./ThemeContext";
+import { AuthContext } from "./AuthContext";
 
-const ThemeContextProvider = ({ children }) => {
+const AuthContextProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
 
   return (
@@ -16,4 +16,4 @@ const ThemeContextProvider = ({ children }) => {
   );
 };
 
-export default ThemeContextProvider;
+export default AuthContextProvider;
