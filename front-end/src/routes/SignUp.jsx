@@ -27,12 +27,12 @@ const SignUp = () => {
       await registerUser(email, password);
 
       setMessage("Account created successfully.");
-      navigate("/login");
-      alert("register successful now just sign in");
     } catch (error) {
       setError(error.message || "Unable to create account.");
     } finally {
       setIsSubmitting(false);
+      navigate("/login");
+      alert("register successful now just sign in");
     }
   };
 

@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { login, isAuthenticated } from "../utils/auth";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,9 +29,17 @@ const Login = () => {
       setIsSubmitting(false);
       setEmail("");
       setPassword("");
+      alert("youre logged in");
+      navigate("/login");
     }
   };
-  if (isAuthenticated === true) return <div>Youre already Logged In</div>;
+  if (isAuthenticated() === true)
+    return (
+      <div>
+        <div>Youre already Logged In 🪩</div>
+        <Link to="/">Home</Link>{" "}
+      </div>
+    );
   else
     return (
       <div className="login-container">
