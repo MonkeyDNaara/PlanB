@@ -21,7 +21,14 @@ function App() {
         <Route path="/eventlist" element={<EventList />} />
         <Route path="/eventcalendar" element={<EventCalender />} />
         <Route path="/eventdetails/:eventId" element={<EventDetails />} />
-        <PrivateRoute component={<CreateEvent />} path="/createevent" />
+        <Route
+          path="/createevent"
+          element={
+            <PrivateRoute>
+              <CreateEvent />
+            </PrivateRoute>
+          }
+        />
         {/* ^ protected Route */}
         <Route path="*" element={<NotFound />} />
       </Route>

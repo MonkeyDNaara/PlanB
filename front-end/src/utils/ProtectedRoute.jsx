@@ -1,14 +1,8 @@
-import { Route, Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import { isAuthenticated } from "./auth";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isAuthenticated() ? <Component {...props} /> : <Redirect to="/login" />
-    }
-  />
-);
+const PrivateRoute = ({ children }) =>
+  isAuthenticated() ? children : <Navigate to="/login" replace />;
 
 export default PrivateRoute;
