@@ -1,5 +1,5 @@
-import CategoryBadge from "../CategoryBadge/CategoryBadge";
-import NeonButton from "../NeonButton/NeonButton";
+import CategoryBadge from "./CategoryBadge";
+import NeonButton from "./NeonButton";
 
 function Hero({ events = [] }) {
   const featured = events[0] || {
