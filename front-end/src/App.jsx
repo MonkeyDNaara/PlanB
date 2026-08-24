@@ -28,7 +28,10 @@ function App() {
         <Route index element={<UpcomingEvents events={upcomingEvents} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/eventlist" element={<EventList events={allEvents} />} />
+        <Route
+          path="/eventlist"
+          element={<EventList events={allEvents} setEvents={setAllEvents} />}
+        />
         <Route path="/eventcalendar" element={<EventCalender />} />
         <Route path="/eventdetails/:eventId" element={<EventDetails />} />
         <Route path="/createevent" element={<CreateEvent />} />

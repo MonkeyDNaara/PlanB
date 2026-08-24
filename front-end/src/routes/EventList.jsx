@@ -1,7 +1,21 @@
+import { useState } from "react";
 import EventCard from "../components/EventCard";
+import { fetchEvents } from "../utils/events";
 
-const EventList = ({ events }) => {
+const EventList = ({ events, setEvents }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const eventList = events.results;
+
+  const handleShowMore = async () => {
+    setIsLoading(true);
+    const nextPage = await fetchEvents(events.currentPage + 1);
+    setEvents((previous) => ({
+      ...nextPage,
+      results: [...previous.results, ...nextPage.results],
+    }));
+    setIsLoading(false);
+  };
+
   return (
     <div>
       <h2>Events</h2>
@@ -10,6 +24,11 @@ const EventList = ({ events }) => {
           <EventCard event={entry} key={entry.id} />
         ))}
       </div>
+      {events.hasNextPage && (
+        <button onClick={handleShowMore} disabled={isLoading}>
+          {isLoading ? "Loading..." : "Show more"}
+        </button>
+      )}
     </div>
   );
 };
