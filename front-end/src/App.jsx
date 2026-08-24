@@ -9,19 +9,23 @@ import CreateEvent from "./routes/CreateEvent";
 import MainLayout from "./layouts/mainLayout";
 import NotFound from "./routes/NotFound";
 import EventDetails from "./routes/EventDetails";
-import { AllEventsContext } from "./contexts/AllEventsContext";
-import { fetchEvents } from "./utils/events";
+import { EventsContext } from "./contexts/EventsContext";
+import { fetchEvents, fetchUpcomingEvents } from "./utils/events";
 
 function App() {
-  const { allEvents, setAllEvents } = use(AllEventsContext);
+  const { allEvents, setAllEvents } = use(EventsContext);
   useEffect(() => {
     fetchEvents().then(setAllEvents);
   }, [setAllEvents]);
+  const { upcomingEvents, setUpcomingEvents } = use(EventsContext);
+  useEffect(() => {
+    fetchUpcomingEvents().then(setUpcomingEvents);
+  }, [setUpcomingEvents]);
 
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<UpcomingEvents />} />
+        <Route index element={<UpcomingEvents events={upcomingEvents} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/eventlist" element={<EventList events={allEvents} />} />

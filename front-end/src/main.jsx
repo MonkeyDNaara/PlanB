@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import ThemeContextProvider from "./contexts/ThemeContextProvider.jsx";
 import AuthContextProvider from "./contexts/AuthContextProvider.jsx";
-import AllEventsContextProvider from "./contexts/allEventsContextProvider.jsx";
+import EventsContextProvider from "./contexts/EventsContextProvider.jsx";
 
 import "./index.css";
 import App from "./App.jsx";
@@ -12,11 +12,11 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeContextProvider>
       <AuthContextProvider>
-        <AllEventsContextProvider>
+        <EventsContextProvider>
           <BrowserRouter>
             <App />
           </BrowserRouter>
-        </AllEventsContextProvider>
+        </EventsContextProvider>
       </AuthContextProvider>
     </ThemeContextProvider>
   </StrictMode>,
