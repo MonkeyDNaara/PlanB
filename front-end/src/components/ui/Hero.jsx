@@ -1,87 +1,96 @@
-import CategoryBadge from "./CategoryBadge";
-import NeonButton from "./NeonButton";
+import { Link } from "react-router-dom";
 
 function Hero({ events = [] }) {
   const featured = events[0] || {
-    title: "Featured",
-    category: "Other",
-    date: "TBA",
-    location: "TBA",
-    image: "",
+    title: "Dein nächster Lieblingsmoment",
+    date: null,
+    location: "In deiner Nähe",
   };
+  const parsedDate = featured.date ? new Date(featured.date) : null;
+  const featuredDate =
+    parsedDate && !Number.isNaN(parsedDate.getTime())
+      ? parsedDate.toLocaleDateString("de-DE", {
+          weekday: "short",
+          day: "2-digit",
+          month: "long",
+        })
+      : "Neue Events folgen";
 
   return (
-    <section className="relative mb-12 overflow-hidden rounded-3xl" id="top">
+    <section
+      className="relative isolate mx-auto grid w-full max-w-7xl overflow-hidden rounded-[2rem] border border-evently-border bg-evently-surface/85 shadow-[0_30px_100px_rgba(15,8,40,0.14)] backdrop-blur-xl lg:grid-cols-[1.05fr_0.95fr]"
+      id="top"
+    >
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(980px_420px_at_80%_14%,rgba(155,92,255,0.14),transparent_18%),radial-gradient(820px_360px_at_62%_84%,rgba(0,168,255,0.10),transparent_16%),linear-gradient(180deg,rgba(10,12,16,0.72),rgba(6,7,10,0.98))] blur-[64px]"
+        className="pointer-events-none absolute -left-28 -top-28 -z-10 h-80 w-80 rounded-full bg-evently-primary/20 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -bottom-32 right-0 -z-10 h-96 w-96 rounded-full bg-cyan-400/15 blur-3xl"
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto max-w-[1500px] rounded-3xl bg-gradient-to-b from-[#0a0d11]/70 to-transparent p-8 shadow-[inset_0_-48px_140px_rgba(2,3,8,0.68)] md:p-12 lg:p-20">
-        <div className="flex flex-col-reverse gap-12 md:flex-row md:items-center">
-          <div className="md:w-5/12">
-            <div className="mb-6 flex flex-wrap gap-3">
-              <CategoryBadge category="Music" />
-              <CategoryBadge category="Sport" />
-              <CategoryBadge category="Comedy" />
-              <CategoryBadge category="Other" />
-            </div>
+      <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-16">
+        <p className="text-xs font-black uppercase tracking-[0.34em] text-evently-primary">
+          Entdecke Evently
+        </p>
+        <h1 className="mt-5 max-w-2xl text-4xl font-black leading-[1.05] tracking-[-0.04em] text-evently-text sm:text-5xl lg:text-6xl">
+          Mehr erleben.
+          <span className="block bg-gradient-to-r from-evently-primary via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
+            Weniger suchen.
+          </span>
+        </h1>
+        <p className="mt-6 max-w-xl text-base leading-7 text-evently-text-secondary sm:text-lg">
+          Finde besondere Events, spontane Lieblingsorte und Momente, die nicht
+          nur im Kalender bleiben.
+        </p>
 
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-violet-300">
-              EVENTLY Premium
-            </p>
-
-            <h1 className="max-w-3xl text-4xl font-extrabold leading-tight text-white md:text-6xl lg:text-7xl">
-              Experience live moments
-              <span className="mt-3 block text-base font-medium text-slate-300 md:text-lg">
-                Where ambience, image and detail meet — discover curated events in high fidelity.
-              </span>
-            </h1>
-
-            <p className="mt-8 max-w-xl text-base leading-7 text-slate-400">
-              A luxurious, immersive dark interface with category-aware neon accents,
-              refined glass surfaces and layered lighting.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <NeonButton color="#9B5CFF">Explore Events</NeonButton>
-              <NeonButton color="#00A8FF">Create Event</NeonButton>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center md:w-7/12">
-            <div className="relative w-full max-w-[980px] overflow-hidden rounded-[20px]">
-              <div className="relative h-[360px] overflow-hidden sm:h-[440px] lg:h-[520px]">
-                {featured.image ? (
-                  <img
-                    src={featured.image}
-                    alt={featured.title}
-                    className="h-full w-full origin-center object-cover transition-transform duration-[1200ms] hover:scale-[1.02]"
-                  />
-                ) : (
-                  <div className="h-full bg-gradient-to-b from-[#0b1116] to-[#06070a]" />
-                )}
-
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent from-30% to-[rgba(2,3,6,0.86)]" aria-hidden="true" />
-                <div className="pointer-events-none absolute -left-40 -top-36 h-[680px] w-[680px] rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(155,92,255,0.16),transparent_36%)] blur-[88px]" aria-hidden="true" />
-                <div className="pointer-events-none absolute -bottom-36 -right-48 h-[620px] w-[620px] rounded-full bg-[radial-gradient(circle_at_40%_40%,rgba(0,168,255,0.10),transparent_40%)] blur-[76px]" aria-hidden="true" />
-                <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_120px_rgba(4,6,12,0.6)] mix-blend-multiply" aria-hidden="true" />
-
-                <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8">
-                  <p className="text-sm font-medium text-slate-300">Featured</p>
-                  <h2 className="mt-1 text-2xl font-bold text-white sm:text-3xl">{featured.title}</h2>
-                  <div className="mt-3 flex flex-wrap items-center gap-3">
-                    <CategoryBadge category={featured.category} />
-                    <p className="text-sm text-slate-400">📍 {featured.location} • {featured.date}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <Link
+            to="/eventlist"
+            className="inline-flex min-h-12 items-center justify-center rounded-xl bg-evently-primary px-6 py-3 text-sm font-bold text-white shadow-[0_14px_38px_rgba(111,60,255,0.32)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_48px_rgba(111,60,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary focus-visible:ring-offset-2 focus-visible:ring-offset-evently-bg"
+          >
+            Events entdecken
+          </Link>
+          <Link
+            to="/createevent"
+            className="inline-flex min-h-12 items-center justify-center rounded-xl border border-evently-border bg-evently-surface px-6 py-3 text-sm font-bold text-evently-text transition duration-200 hover:-translate-y-0.5 hover:border-evently-primary/60 hover:text-evently-primary hover:shadow-[0_14px_38px_rgba(111,60,255,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary"
+          >
+            Event erstellen
+          </Link>
         </div>
       </div>
 
-      <div className="pointer-events-none absolute -bottom-6 left-0 right-0 h-28 bg-gradient-to-b from-transparent to-black/60 blur-[18px]" aria-hidden="true" />
+      <div className="relative min-h-[360px] overflow-hidden border-t border-evently-border bg-evently-bg-secondary p-7 sm:min-h-[430px] sm:p-10 lg:border-l lg:border-t-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_18%,rgba(124,92,255,0.25),transparent_32%),radial-gradient(circle_at_20%_86%,rgba(34,211,238,0.2),transparent_34%)]" aria-hidden="true" />
+        <div className="absolute left-[12%] top-[14%] h-36 w-36 rotate-12 rounded-[2.5rem] border border-evently-primary/20 bg-evently-surface/35 shadow-[0_30px_80px_rgba(111,60,255,0.18)] backdrop-blur-xl sm:h-44 sm:w-44" aria-hidden="true" />
+        <div className="absolute right-[10%] top-[8%] font-evently-brand text-8xl text-evently-primary/15 sm:text-9xl" aria-hidden="true">
+          E
+        </div>
+
+        <div className="relative mt-28 rounded-[1.75rem] border border-evently-border bg-evently-surface/85 p-6 shadow-[0_25px_70px_rgba(15,8,40,0.14)] backdrop-blur-xl sm:mt-40 sm:p-8">
+          <div className="flex items-center justify-between gap-4">
+            <span className="rounded-full bg-evently-primary-soft px-3 py-1.5 text-[0.65rem] font-black uppercase tracking-[0.2em] text-evently-primary">
+              Als Nächstes
+            </span>
+            <span className="text-xs font-semibold text-evently-muted">{featuredDate}</span>
+          </div>
+          <h2 className="mt-5 text-2xl font-black leading-tight text-evently-text sm:text-3xl">
+            {featured.title}
+          </h2>
+          <p className="mt-3 text-sm text-evently-text-secondary">
+            ⌖ {featured.location || "Ort wird bekannt gegeben"}
+          </p>
+          {featured.id && (
+            <Link
+              to={`/eventdetails/${featured.id}`}
+              className="mt-6 inline-flex items-center gap-2 text-sm font-black text-evently-primary transition hover:gap-3"
+            >
+              Event ansehen <span aria-hidden="true">→</span>
+            </Link>
+          )}
+        </div>
+      </div>
     </section>
   );
 }
