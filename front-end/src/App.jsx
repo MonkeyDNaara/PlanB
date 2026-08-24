@@ -11,6 +11,7 @@ import NotFound from "./routes/NotFound";
 import EventDetails from "./routes/EventDetails";
 import { EventsContext } from "./contexts/EventsContext";
 import { fetchEvents, fetchUpcomingEvents } from "./utils/events";
+import PrivateRoute from "./utils/ProtectedRoute";
 
 function App() {
   const { allEvents, setAllEvents } = use(EventsContext);
@@ -34,7 +35,14 @@ function App() {
         />
         <Route path="/eventcalendar" element={<EventCalender />} />
         <Route path="/eventdetails/:eventId" element={<EventDetails />} />
-        <Route path="/createevent" element={<CreateEvent />} />
+        <Route
+          path="/createevent"
+          element={
+            <PrivateRoute>
+              <CreateEvent />
+            </PrivateRoute>
+          }
+        />
         {/* ^ protected Route */}
         <Route path="*" element={<NotFound />} />
       </Route>
