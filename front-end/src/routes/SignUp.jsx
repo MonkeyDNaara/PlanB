@@ -10,6 +10,7 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,7 +18,7 @@ const SignUp = () => {
     setMessage("");
 
     if (!email || !password) {
-      setError("Email and password are required.");
+      setError("E-Mail-Adresse und Passwort sind erforderlich.");
       return;
     }
 
@@ -26,9 +27,9 @@ const SignUp = () => {
 
       await registerUser(email, password);
 
-      setMessage("Account created successfully.");
+      setMessage("Dein Konto wurde erfolgreich erstellt.");
     } catch (error) {
-      setError(error.message || "Unable to create account.");
+      setError(error.message || "Das Konto konnte nicht erstellt werden.");
     } finally {
       setIsSubmitting(false);
       navigate("/login");
@@ -50,7 +51,7 @@ const SignUp = () => {
       <section className="grid w-full max-w-5xl overflow-hidden rounded-[2rem] border border-evently-border bg-evently-surface/85 shadow-[0_30px_100px_rgba(15,8,40,0.2)] backdrop-blur-xl lg:grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-evently-primary">
-            Join Evently
+            Willkommen bei Evently
           </p>
           <h1 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
             Dein Platz ist reserviert.
@@ -60,7 +61,11 @@ const SignUp = () => {
             Leben passen.
           </p>
 
-          <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+          <form
+            className="mt-8 space-y-5"
+            onSubmit={handleSubmit}
+            aria-busy={isSubmitting}
+          >
             <div>
               <label
                 className="mb-2 block text-sm font-semibold text-evently-text"
@@ -88,12 +93,23 @@ const SignUp = () => {
                 >
                   Passwort
                 </label>
-                <span className="text-xs text-evently-muted">8–50 Zeichen</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-evently-muted">8–50 Zeichen</span>
+                  <button
+                    className="rounded-lg px-2 py-1 text-xs font-bold text-evently-primary transition hover:bg-evently-primary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary"
+                    type="button"
+                    aria-controls="password-input"
+                    aria-pressed={showPassword}
+                    onClick={() => setShowPassword((visible) => !visible)}
+                  >
+                    {showPassword ? "Verbergen" : "Anzeigen"}
+                  </button>
+                </div>
               </div>
               <input
                 id="password-input"
                 className="min-h-12 w-full rounded-xl border border-evently-border bg-evently-bg-secondary/70 px-4 py-3 text-evently-text outline-none transition placeholder:text-evently-muted focus:border-evently-primary focus:ring-4 focus:ring-evently-primary-soft"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 autoComplete="new-password"
                 minLength={8}
                 maxLength={50}
@@ -113,7 +129,11 @@ const SignUp = () => {
               </p>
             )}
             {message && (
-              <p className="rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-500">
+              <p
+                className="rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-500"
+                role="status"
+                aria-live="polite"
+              >
                 {message}
               </p>
             )}
@@ -151,7 +171,7 @@ const SignUp = () => {
 
           <div>
             <span className="inline-flex rounded-full border border-evently-primary/25 bg-evently-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-evently-primary">
-              Your next experience
+              Dein nächstes Erlebnis
             </span>
             <h2 className="mt-8 text-5xl font-black leading-[1.05] tracking-tight">
               Mehr erleben. Weniger suchen.
@@ -163,7 +183,7 @@ const SignUp = () => {
           </div>
 
           <div className="rounded-[1.75rem] border border-evently-border bg-evently-surface/65 p-6 shadow-[0_20px_60px_rgba(15,8,40,0.12)] backdrop-blur-xl">
-            <p className="text-sm font-bold text-evently-primary">EVENTLY TIP</p>
+            <p className="text-sm font-bold text-evently-primary">EVENTLY TIPP</p>
             <p className="mt-3 text-lg font-bold leading-7">
               Speichere Favoriten, plane deinen Kalender und verpasse keinen
               besonderen Moment.

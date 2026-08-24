@@ -9,13 +9,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
 
     if (!email || !password) {
-      setError("Email and password are required.");
+      setError("E-Mail-Adresse und Passwort sind erforderlich.");
       return;
     }
 
@@ -24,7 +25,7 @@ const Login = () => {
 
       await login(email, password);
     } catch (error) {
-      setError(error || "Unable to Login.");
+      setError(error || "Die Anmeldung ist derzeit nicht möglich.");
     } finally {
       setIsSubmitting(false);
       setEmail("");
@@ -93,7 +94,7 @@ const Login = () => {
 
             <div>
               <span className="inline-flex rounded-full border border-evently-primary/25 bg-evently-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-evently-primary">
-                Welcome back
+                Dein Zugang
               </span>
               <h1 className="mt-8 text-5xl font-black leading-[1.05] tracking-tight">
                 Deine nächste Nacht beginnt hier.
@@ -135,7 +136,11 @@ const Login = () => {
               hat.
             </p>
 
-            <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+            <form
+              className="mt-8 space-y-5"
+              onSubmit={handleSubmit}
+              aria-busy={isSubmitting}
+            >
               <div>
                 <label
                   className="mb-2 block text-sm font-semibold text-evently-text"
@@ -156,16 +161,27 @@ const Login = () => {
               </div>
 
               <div>
-                <label
-                  className="mb-2 block text-sm font-semibold text-evently-text"
-                  htmlFor="password-input"
-                >
-                  Passwort
-                </label>
+                <div className="mb-2 flex items-center justify-between gap-4">
+                  <label
+                    className="block text-sm font-semibold text-evently-text"
+                    htmlFor="password-input"
+                  >
+                    Passwort
+                  </label>
+                  <button
+                    className="rounded-lg px-2 py-1 text-xs font-bold text-evently-primary transition hover:bg-evently-primary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary"
+                    type="button"
+                    aria-controls="password-input"
+                    aria-pressed={showPassword}
+                    onClick={() => setShowPassword((visible) => !visible)}
+                  >
+                    {showPassword ? "Verbergen" : "Anzeigen"}
+                  </button>
+                </div>
                 <input
                   id="password-input"
                   className="min-h-12 w-full rounded-xl border border-evently-border bg-evently-bg-secondary/70 px-4 py-3 text-evently-text outline-none transition placeholder:text-evently-muted focus:border-evently-primary focus:ring-4 focus:ring-evently-primary-soft"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   placeholder="Dein Passwort"
                   value={password}
