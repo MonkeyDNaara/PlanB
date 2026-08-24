@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { registerUser } from "../utils/auth";
 
 const SignUp = () => {
@@ -26,16 +27,17 @@ const SignUp = () => {
       await registerUser(email, password);
 
       setMessage("Account created successfully.");
-      navigate("/login");
     } catch (error) {
       setError(error.message || "Unable to create account.");
     } finally {
       setIsSubmitting(false);
+      navigate("/login");
+      alert("register successful now just sign in");
     }
   };
 
   return (
-    <div className="login-container">
+    <div className="signup-container">
       <h2>Sign Up right now and become a part of the culture</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email-input">E-Mail</label>
@@ -56,7 +58,7 @@ const SignUp = () => {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
-        <button id="loginButton" type="submit" disabled={isSubmitting}>
+        <button id="signupButton" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Signing Up..." : "Sign Up"}
         </button>
         {error && <p role="alert">{error}</p>}
