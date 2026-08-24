@@ -13,7 +13,6 @@ const Header = () => {
         <NavLink to="/" end>
           Home
         </NavLink>
-        {/* <NavLink to="/createevent">Create Event</NavLink> */}
         <ThemeToggle />
       </div>
     </header>
