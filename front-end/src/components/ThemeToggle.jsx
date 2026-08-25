@@ -5,7 +5,7 @@ const ThemeToggle = () => {
   const { theme, setTheme } = use(ThemeContext);
 
   const handleTheme = () => {
-    theme == "light" ? setTheme("neon") : setTheme("light");
+    theme == "light" ? setTheme("dark") : setTheme("light");
   };
 
   return (
