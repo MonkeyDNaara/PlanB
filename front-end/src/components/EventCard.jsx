@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 
 const CARD_ACCENTS = [
   { color: "#7c3aed", soft: "rgba(124, 58, 237, 0.2)" },
