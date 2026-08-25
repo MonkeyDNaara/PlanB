@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchEventById } from "../utils/events";
 
 const EventDetails = () => {
   const { eventId } = useParams();
+  const navigate = useNavigate();
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,6 +40,7 @@ const EventDetails = () => {
 
   return (
     <div className="px-8 pb-8">
+      <button onClick={() => navigate(-1)}>← Back</button>
       <h2 className="text-2xl font-black text-evently-text">{title}</h2>
       <p className="mt-2 text-sm text-evently-text-secondary">
         {formattedDate} · {formattedTime}
