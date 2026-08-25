@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 import ThemeContextProvider from "./contexts/ThemeContextProvider.jsx";
 import AuthContextProvider from "./contexts/AuthContextProvider.jsx";
 import EventsContextProvider from "./contexts/EventsContextProvider.jsx";

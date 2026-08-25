@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router";
 import { use, useEffect } from "react";
 import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
