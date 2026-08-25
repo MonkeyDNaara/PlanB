@@ -8,6 +8,10 @@ const fetchUpcomingEvents = () => {
   return apiRequest("/events/upcoming");
 };
 
+const fetchEventById = (id) => {
+  return apiRequest(`/events/${id}`);
+};
+
 const createEvent = (event, token) => {
   return apiRequest("/events", {
     method: "POST",
@@ -16,4 +20,4 @@ const createEvent = (event, token) => {
   });
 };
 
-export { fetchEvents, createEvent, fetchUpcomingEvents };
+export { fetchEvents, createEvent, fetchUpcomingEvents, fetchEventById };
