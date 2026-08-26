@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
 import EmptyState from "../components/ui/EmptyState";
 import { fetchEvents } from "../utils/events";
 
-const EventList = ({ events, setEvents }) => {
+const EventList = () => {
+  const [events, setEvents] = useState({ results: [] });
   const [isLoading, setIsLoading] = useState(false);
-  const eventList = events?.results ?? [];
+  const eventList = events.results;
+
+  useEffect(() => {
+    fetchEvents().then(setEvents);
+  }, []);
 
   const handleShowMore = async () => {
     setIsLoading(true);
