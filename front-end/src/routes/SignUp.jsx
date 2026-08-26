@@ -51,7 +51,7 @@ const SignUp = () => {
       <section className="grid w-full max-w-5xl overflow-hidden rounded-[2rem] border border-evently-border bg-evently-surface/85 shadow-[0_30px_100px_rgba(15,8,40,0.2)] backdrop-blur-xl lg:grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-evently-primary">
-            Willkommen bei Evently
+            Willkommen bei PlanB
           </p>
           <h1 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
             Dein Platz ist reserviert.
@@ -177,13 +177,13 @@ const SignUp = () => {
               Mehr erleben. Weniger suchen.
             </h2>
             <p className="mt-6 text-base leading-7 text-evently-text-secondary">
-              Von Clubnacht bis Comedy, von Sport bis Secret Event – Evently
+              Von Clubnacht bis Comedy, von Sport bis Secret Event – PlanB
               bringt dich genau dorthin, wo etwas passiert.
             </p>
           </div>
 
           <div className="rounded-[1.75rem] border border-evently-border bg-evently-surface/65 p-6 shadow-[0_20px_60px_rgba(15,8,40,0.12)] backdrop-blur-xl">
-            <p className="text-sm font-bold text-evently-primary">EVENTLY TIPP</p>
+            <p className="text-sm font-bold text-evently-primary">PLANB TIPP</p>
             <p className="mt-3 text-lg font-bold leading-7">
               Speichere Favoriten, plane deinen Kalender und verpasse keinen
               besonderen Moment.

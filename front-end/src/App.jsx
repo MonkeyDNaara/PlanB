@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
 import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
@@ -10,8 +11,15 @@ import NotFound from "./routes/NotFound";
 import EventDetails from "./routes/EventDetails";
 import EditEvent from "./routes/EditEvent";
 import PrivateRoute from "./utils/ProtectedRoute";
+import { fetchEvents } from "./utils/events";
 
 function App() {
+  const [allEvents, setAllEvents] = useState({ results: [] });
+
+  useEffect(() => {
+    fetchEvents().then(setAllEvents);
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>

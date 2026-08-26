@@ -65,7 +65,7 @@ const Header = ({ isPremium = false }) => {
             end
             onClick={closeMobileNavigation}
             className="group flex min-w-0 items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary/60"
-            aria-label="Evently Startseite"
+            aria-label="PlanB Startseite"
           >
             <AnimatedEventlyLogo size="sm" premium={isPremium} />
             <span className="truncate font-evently-brand text-2xl font-normal tracking-[0.03em]">
@@ -100,7 +100,7 @@ const Header = ({ isPremium = false }) => {
             ))}
           </nav>
 
-          <div className="inline-flex min-h-10 items-center justify-center rounded-xl border border-evently-border bg-white/[0.02] px-3 text-sm text-evently-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:border-evently-primary/60 hover:bg-evently-primary-soft hover:text-evently-text hover:shadow-[0_0_22px_var(--evently-primary-soft)]">
+          <div className="inline-flex items-center justify-center">
             <ThemeToggle />
           </div>
 

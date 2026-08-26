@@ -47,7 +47,7 @@ const AnimatedEventlyLogo = ({ size = "md", premium = false }) => {
             : "bg-gradient-to-br from-evently-primary via-fuchsia-500 to-cyan-400 text-white shadow-[0_8px_24px_rgba(111,60,255,0.28)] hover:shadow-[0_10px_34px_rgba(111,60,255,0.45)]"
         }`}
       >
-        E
+        P
       </span>
     </span>
   );
