@@ -9,6 +9,7 @@ import CreateEvent from "./routes/CreateEvent";
 import MainLayout from "./layouts/mainLayout";
 import NotFound from "./routes/NotFound";
 import EventDetails from "./routes/EventDetails";
+import EditEvent from "./routes/EditEvent";
 import { EventsContext } from "./contexts/EventsContext";
 import { fetchEvents, fetchUpcomingEvents } from "./utils/events";
 import PrivateRoute from "./utils/ProtectedRoute";
@@ -35,6 +36,14 @@ function App() {
         />
         <Route path="/eventcalendar" element={<EventCalender />} />
         <Route path="/eventdetails/:eventId" element={<EventDetails />} />
+        <Route
+          path="/eventdetails/:eventId/edit"
+          element={
+            <PrivateRoute>
+              <EditEvent />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/createevent"
           element={

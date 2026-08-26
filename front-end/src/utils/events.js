@@ -20,4 +20,18 @@ const createEvent = (event, token) => {
   });
 };
 
-export { fetchEvents, createEvent, fetchUpcomingEvents, fetchEventById };
+const updateEvent = (id, event, token) => {
+  return apiRequest(`/events/${id}`, {
+    method: "PUT",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    body: JSON.stringify(event),
+  });
+};
+
+export {
+  fetchEvents,
+  createEvent,
+  updateEvent,
+  fetchUpcomingEvents,
+  fetchEventById,
+};

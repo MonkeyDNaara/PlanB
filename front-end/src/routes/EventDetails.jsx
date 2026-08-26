@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { fetchEventById } from "../utils/events";
+import { getCurrentUser } from "../utils/auth";
 
 const EventDetails = () => {
   const { eventId } = useParams();
@@ -21,7 +22,9 @@ const EventDetails = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error || !event) return <div>Event not found.</div>;
 
-  const { title, date, location, description } = event;
+  const { title, date, location, description, organizerId } = event;
+  const currentUser = getCurrentUser();
+  const isOwner = currentUser && currentUser.id === organizerId;
   const parsedDate = date ? new Date(date) : null;
   const hasValidDate = parsedDate && !Number.isNaN(parsedDate.getTime());
   const formattedDate = hasValidDate
@@ -40,7 +43,17 @@ const EventDetails = () => {
 
   return (
     <div className="px-8 pb-8">
-      <button onClick={() => navigate(-1)}>← Back</button>
+      <div className="flex items-center justify-between">
+        <button onClick={() => navigate(-1)}>← Back</button>
+        {isOwner && (
+          <Link
+            to={`/eventdetails/${eventId}/edit`}
+            className="text-sm font-bold text-evently-primary"
+          >
+            Edit event
+          </Link>
+        )}
+      </div>
       <h2 className="text-2xl font-black text-evently-text">{title}</h2>
       <p className="mt-2 text-sm text-evently-text-secondary">
         {formattedDate} · {formattedTime}
