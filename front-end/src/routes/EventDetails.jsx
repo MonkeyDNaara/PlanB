@@ -35,8 +35,8 @@ const EventDetails = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error || !event) return <div>Event not found.</div>;
+  if (isLoading) return <div>Laden...</div>;
+  if (error || !event) return <div>Event nicht gefunden.</div>;
 
   const { title, date, location, description, organizerId } = event;
   const currentUser = getCurrentUser();
@@ -60,21 +60,21 @@ const EventDetails = () => {
   return (
     <div className="px-8 pb-8">
       <div className="flex items-center justify-between">
-        <button onClick={() => navigate(-1)}>← Back</button>
+        <button onClick={() => navigate(-1)}>← Zurück</button>
         {isOwner && (
           <div className="flex items-center gap-4">
             <Link
               to={`/eventdetails/${eventId}/edit`}
               className="text-sm font-bold text-evently-primary"
             >
-              Edit event
+              Event bearbeiten
             </Link>
             <button
               onClick={handleDelete}
               disabled={isDeleting}
               className="text-sm font-bold text-red-600 disabled:opacity-60"
             >
-              {isDeleting ? "Deleting…" : "Delete event"}
+              {isDeleting ? "Löschen…" : "Event löschen"}
             </button>
           </div>
         )}
