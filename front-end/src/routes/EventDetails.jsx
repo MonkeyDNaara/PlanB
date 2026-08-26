@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 import { fetchEventById } from "../utils/events";
 import { useParams } from "react-router";
 
@@ -48,7 +48,9 @@ const EventDetails = () => {
       </p>
       <p className="mt-1 text-sm text-evently-text-secondary">{location}</p>
       {description && (
-        <p className="mt-4 text-sm leading-6 text-evently-muted">{description}</p>
+        <p className="mt-4 text-sm leading-6 text-evently-muted">
+          {description}
+        </p>
       )}
     </div>
   );
