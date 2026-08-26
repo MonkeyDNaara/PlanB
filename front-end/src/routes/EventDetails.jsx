@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { fetchEventById } from "../utils/events";
-import { useParams } from "react-router";
 
 const EventDetails = () => {
   const { eventId } = useParams();
