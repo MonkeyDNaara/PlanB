@@ -28,10 +28,18 @@ const updateEvent = (id, event, token) => {
   });
 };
 
+const deleteEvent = (id, token) => {
+  return apiRequest(`/events/${id}`, {
+    method: "DELETE",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  });
+};
+
 export {
   fetchEvents,
   createEvent,
   updateEvent,
+  deleteEvent,
   fetchUpcomingEvents,
   fetchEventById,
 };

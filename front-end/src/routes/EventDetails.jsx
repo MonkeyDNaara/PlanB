@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import { fetchEventById } from "../utils/events";
-import { getCurrentUser } from "../utils/auth";
+import { deleteEvent, fetchEventById } from "../utils/events";
+import { getCurrentUser, getToken } from "../utils/auth";
 
 const EventDetails = () => {
   const { eventId } = useParams();
@@ -9,6 +9,8 @@ const EventDetails = () => {
   const [event, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,6 +20,20 @@ const EventDetails = () => {
       .catch(setError)
       .finally(() => setIsLoading(false));
   }, [eventId]);
+
+  const handleDelete = async () => {
+    if (!window.confirm("Dieses Event wirklich löschen?")) return;
+
+    setIsDeleting(true);
+    setDeleteError(null);
+    try {
+      await deleteEvent(eventId, getToken());
+      navigate("/eventlist");
+    } catch (submitError) {
+      setDeleteError(submitError);
+      setIsDeleting(false);
+    }
+  };
 
   if (isLoading) return <div>Loading...</div>;
   if (error || !event) return <div>Event not found.</div>;
@@ -46,14 +62,31 @@ const EventDetails = () => {
       <div className="flex items-center justify-between">
         <button onClick={() => navigate(-1)}>← Back</button>
         {isOwner && (
-          <Link
-            to={`/eventdetails/${eventId}/edit`}
-            className="text-sm font-bold text-evently-primary"
-          >
-            Edit event
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              to={`/eventdetails/${eventId}/edit`}
+              className="text-sm font-bold text-evently-primary"
+            >
+              Edit event
+            </Link>
+            <button
+              onClick={handleDelete}
+              disabled={isDeleting}
+              className="text-sm font-bold text-red-600 disabled:opacity-60"
+            >
+              {isDeleting ? "Deleting…" : "Delete event"}
+            </button>
+          </div>
         )}
       </div>
+      {deleteError && (
+        <p
+          className="mt-4 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-600"
+          role="alert"
+        >
+          {deleteError.message ?? "Das Event konnte nicht gelöscht werden."}
+        </p>
+      )}
       <h2 className="text-2xl font-black text-evently-text">{title}</h2>
       <p className="mt-2 text-sm text-evently-text-secondary">
         {formattedDate} · {formattedTime}
