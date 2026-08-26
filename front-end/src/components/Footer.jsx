@@ -18,7 +18,10 @@ const Footer = () => {
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-center sm:flex-row sm:text-left lg:px-8">
         <div className="flex items-center gap-3">
-          <span className="relative flex h-11 w-11 items-center justify-center" aria-hidden="true">
+          <span
+            className="relative flex h-11 w-11 items-center justify-center"
+            aria-hidden="true"
+          >
             <span className="absolute inset-0 animate-[spin_6s_linear_infinite] rounded-2xl border border-evently-primary/25 motion-reduce:animate-none">
               <span className="absolute -right-1 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.85)]" />
               <span className="absolute -left-1 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(232,121,249,0.85)]" />
@@ -29,7 +32,7 @@ const Footer = () => {
           </span>
           <div>
             <p className="font-evently-brand text-xl leading-none text-evently-text transition duration-300 group-hover:text-evently-primary">
-              Evently
+              PlanB
             </p>
             <p className="mt-1 text-xs text-evently-muted">
               Mehr erleben. Weniger suchen.
@@ -38,7 +41,7 @@ const Footer = () => {
         </div>
 
         <p className="text-xs leading-5 text-evently-muted sm:text-right">
-          © {currentYear} Evently · Niko, Muju &amp; Marlin
+          © {currentYear} PlanB · Niko, Muju &amp; Marlin
           <span className="block">Alle Rechte vorbehalten.</span>
         </p>
       </div>

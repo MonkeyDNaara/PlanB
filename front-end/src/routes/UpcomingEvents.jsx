@@ -1,9 +1,15 @@
+import { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
 import EmptyState from "../components/ui/EmptyState";
 import Hero from "../components/ui/Hero";
+import { fetchUpcomingEvents } from "../utils/events";
 
-const UpcomingEvents = ({ events }) => {
-  const eventList = Array.isArray(events) ? events : [];
+const UpcomingEvents = () => {
+  const [eventList, setEventList] = useState([]);
+
+  useEffect(() => {
+    fetchUpcomingEvents().then(setEventList);
+  }, []);
 
   return (
     <main className="relative isolate min-h-[calc(100vh-9rem)] overflow-hidden bg-evently-bg px-5 py-8 text-evently-text sm:px-8 sm:py-12 lg:py-16">
