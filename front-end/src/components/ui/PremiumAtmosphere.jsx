@@ -1,28 +1,35 @@
+import honeyballGold from "../../assets/backgrounds/planb-honeyball-gold.webp";
+import honeyballViolet from "../../assets/backgrounds/planb-honeyball-violet.webp";
+import spaceBackground from "../../assets/backgrounds/planb-space.webp";
+
 const PremiumAtmosphere = () => {
   return (
-    <>
+    <div
+      className="planb-space-scene pointer-events-none fixed inset-0 z-0 overflow-hidden"
+      style={{ "--planb-space-background": `url(${spaceBackground})` }}
+      aria-hidden="true"
+    >
       <div
-        className="evently-honeycomb-depth pointer-events-none fixed inset-0 z-0"
-        aria-hidden="true"
-      />
-      <div
-        className="evently-honeycomb pointer-events-none fixed inset-0 z-[1]"
-        aria-hidden="true"
-      />
-      <div
-        className="premium-atmosphere pointer-events-none fixed inset-0 z-0 overflow-hidden"
-        aria-hidden="true"
+        className="planb-space-backdrop absolute inset-0"
       >
-        <div className="premium-stars absolute inset-0" />
-
-        <div className="premium-aurora premium-aurora-violet absolute -left-[18rem] -top-[16rem] h-[42rem] w-[42rem] rounded-full" />
-        <div className="premium-aurora premium-aurora-cyan absolute -bottom-[20rem] -right-[16rem] h-[46rem] w-[46rem] rounded-full" />
-        <div className="premium-aurora premium-aurora-gold absolute left-1/2 top-1/3 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full" />
-
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(2,1,8,0.74)_100%)]" />
-        <div className="premium-gold-horizon absolute inset-x-0 top-16 h-px" />
+        <div className="planb-space-shade absolute inset-0" />
       </div>
-    </>
+
+      <div className="planb-honeyball absolute left-1/2 top-1/2">
+        <img
+          className="planb-honeyball-image planb-honeyball-violet absolute inset-0 h-full w-full object-contain"
+          src={honeyballViolet}
+          alt=""
+        />
+        <img
+          className="planb-honeyball-image planb-honeyball-gold absolute inset-0 h-full w-full object-contain"
+          src={honeyballGold}
+          alt=""
+        />
+      </div>
+
+      <div className="planb-space-vignette absolute inset-0" />
+    </div>
   );
 };
 

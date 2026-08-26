@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { PREMIUM_UNLOCK_EVENT } from "../../hooks/useEventSelection";
 
 const CELEBRATION_DURATION = 2;
 
@@ -41,6 +42,9 @@ const playPremiumCrowd = () => {
 
   try {
     const audioContext = new AudioContext();
+    if (audioContext.state === "suspended") {
+      void audioContext.resume();
+    }
     const sampleRate = audioContext.sampleRate;
     const buffer = audioContext.createBuffer(
       1,
@@ -73,7 +77,7 @@ const playPremiumCrowd = () => {
     crowdFilter.Q.value = 0.65;
     crowdGain.gain.setValueAtTime(0.0001, audioContext.currentTime);
     crowdGain.gain.exponentialRampToValueAtTime(
-      0.32,
+      0.62,
       audioContext.currentTime + 0.08,
     );
     crowdGain.gain.exponentialRampToValueAtTime(
@@ -116,12 +120,28 @@ const playPremiumCrowd = () => {
 };
 
 const PremiumCelebration = ({ active = false }) => {
-  const hasPlayed = useRef(false);
+  const lastPlayedAt = useRef(0);
 
   useEffect(() => {
-    if (active && !hasPlayed.current) {
+    const playUnlockedSound = () => {
+      lastPlayedAt.current = Date.now();
       playPremiumCrowd();
-      hasPlayed.current = true;
+    };
+
+    window.addEventListener(PREMIUM_UNLOCK_EVENT, playUnlockedSound);
+
+    return () => {
+      window.removeEventListener(PREMIUM_UNLOCK_EVENT, playUnlockedSound);
+    };
+  }, []);
+
+  useEffect(() => {
+    const soundWasNotStartedByTheClick =
+      Date.now() - lastPlayedAt.current > 500;
+
+    if (active && soundWasNotStartedByTheClick) {
+      playPremiumCrowd();
+      lastPlayedAt.current = Date.now();
     }
   }, [active]);
 

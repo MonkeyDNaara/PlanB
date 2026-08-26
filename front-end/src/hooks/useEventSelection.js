@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 const EVENT_SELECTION_KEY = "evently-selected-events";
 const EVENT_SELECTION_CHANGE = "evently:selection-change";
+const PREMIUM_UNLOCK_EVENT = "planb:premium-unlocked";
 const MAX_SELECTED_EVENTS = 3;
 
 const readSelectedEventIds = () => {
@@ -66,6 +67,13 @@ const useEventSelection = () => {
       ? currentSelection.filter((id) => id !== normalizedEventId)
       : [...currentSelection, normalizedEventId];
 
+    if (
+      currentSelection.length === MAX_SELECTED_EVENTS - 1 &&
+      nextSelection.length === MAX_SELECTED_EVENTS
+    ) {
+      window.dispatchEvent(new CustomEvent(PREMIUM_UNLOCK_EVENT));
+    }
+
     saveSelectedEventIds(nextSelection);
     setSelectedEventIds(nextSelection);
   }, []);
@@ -78,5 +86,5 @@ const useEventSelection = () => {
   };
 };
 
-export { MAX_SELECTED_EVENTS };
+export { MAX_SELECTED_EVENTS, PREMIUM_UNLOCK_EVENT };
 export default useEventSelection;

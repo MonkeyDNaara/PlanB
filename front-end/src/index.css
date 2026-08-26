@@ -230,11 +230,127 @@
     box-shadow: 0 0 22px rgba(245, 158, 11, 0.42);
     opacity: 0.45;
   }
+
+  .planb-space-scene {
+    opacity: 0;
+    visibility: hidden;
+    background: #020108;
+    transition:
+      opacity 900ms ease,
+      visibility 900ms ease;
+  }
+
+  .theme-dark .planb-space-scene {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .theme-dark .evently-shell > header,
+  .theme-dark .evently-shell > footer {
+    background: transparent;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .planb-space-backdrop {
+    background-image: var(--planb-space-background);
+    background-position: center;
+    background-size: cover;
+    filter: saturate(1.2) contrast(1.12) brightness(0.88);
+    transform: scale(1.04);
+  }
+
+  .planb-space-shade {
+    background:
+      linear-gradient(rgba(1, 1, 8, 0.1), rgba(1, 1, 8, 0.3)),
+      radial-gradient(circle at center, transparent 20%, rgba(1, 1, 8, 0.12) 62%, rgba(1, 1, 8, 0.48) 100%);
+  }
+
+  .planb-honeyball {
+    width: min(92vmin, 68rem);
+    aspect-ratio: 1;
+    opacity: 0.82;
+    animation: planb-honeyball-turn 150s linear infinite;
+    filter:
+      drop-shadow(0 0 22px rgba(167, 100, 255, 0.78))
+      drop-shadow(0 0 62px rgba(124, 58, 237, 0.52));
+    transition:
+      filter 1400ms ease,
+      opacity 900ms ease;
+    will-change: transform;
+  }
+
+  .planb-honeyball-image {
+    transition:
+      opacity 1400ms ease,
+      filter 1400ms ease;
+  }
+
+  .planb-honeyball-violet {
+    opacity: 1;
+    filter:
+      drop-shadow(0 0 10px rgba(224, 192, 255, 0.98))
+      drop-shadow(0 0 30px rgba(168, 85, 247, 0.94));
+  }
+
+  .planb-honeyball-gold {
+    opacity: 0;
+    filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0));
+  }
+
+  .theme-dark .evently-premium .planb-honeyball {
+    opacity: 0.9;
+    filter:
+      drop-shadow(0 0 24px rgba(255, 232, 120, 0.94))
+      drop-shadow(0 0 72px rgba(245, 158, 11, 0.72));
+  }
+
+  .theme-dark .evently-premium .planb-honeyball-violet {
+    opacity: 0;
+  }
+
+  .theme-dark .evently-premium .planb-honeyball-gold {
+    opacity: 1;
+    filter:
+      drop-shadow(0 0 12px rgba(255, 252, 210, 1))
+      drop-shadow(0 0 38px rgba(250, 204, 21, 1));
+  }
+
+  .planb-space-vignette {
+    background:
+      linear-gradient(to bottom, rgba(1, 1, 7, 0.2), transparent 18%, transparent 80%, rgba(1, 1, 7, 0.4)),
+      radial-gradient(circle at center, transparent 38%, rgba(1, 1, 8, 0.24) 100%);
+  }
+}
+
+@keyframes planb-honeyball-turn {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 @keyframes evently-premium-stars {
   to {
     transform: translate3d(34px, 24px, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .planb-honeyball {
+    width: 112vmax;
+    opacity: 0.68;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planb-honeyball {
+    animation: none;
+    transform: translate(-50%, -50%);
   }
 }
 
