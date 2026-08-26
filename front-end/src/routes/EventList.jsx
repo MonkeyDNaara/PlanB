@@ -32,7 +32,7 @@ const EventList = ({ events, setEvents }) => {
         <header className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.32em] text-evently-primary">
-              Evently entdecken
+              PlanB entdecken
             </p>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.04em] text-evently-text sm:text-5xl">
               Events, die zu dir passen.
@@ -43,8 +43,12 @@ const EventList = ({ events, setEvents }) => {
             </p>
           </div>
           {eventList.length > 0 && (
-            <p className="text-sm font-semibold text-evently-muted" aria-live="polite">
-              {eventList.length} {eventList.length === 1 ? "Event" : "Events"} geladen
+            <p
+              className="text-sm font-semibold text-evently-muted"
+              aria-live="polite"
+            >
+              {eventList.length} {eventList.length === 1 ? "Event" : "Events"}{" "}
+              geladen
             </p>
           )}
         </header>

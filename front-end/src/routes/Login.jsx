@@ -57,7 +57,7 @@ const Login = () => {
             Du bist bereits angemeldet.
           </h1>
           <p className="mx-auto mt-4 max-w-md leading-7 text-evently-text-secondary">
-            Deine Evently-Welt wartet schon. Entdecke neue Erlebnisse und plane
+            Deine PlanB-Welt wartet schon. Entdecke neue Erlebnisse und plane
             deinen nächsten besonderen Moment.
           </p>
           <Link
@@ -126,14 +126,13 @@ const Login = () => {
 
           <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-evently-primary">
-              Evently Login
+              PlanB Login
             </p>
             <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
               Willkommen zurück.
             </h2>
             <p className="mt-3 text-sm leading-6 text-evently-text-secondary sm:text-base">
-              Melde dich an und mach dort weiter, wo dein Erlebnis begonnen
-              hat.
+              Melde dich an und mach dort weiter, wo dein Erlebnis begonnen hat.
             </p>
 
             <form
