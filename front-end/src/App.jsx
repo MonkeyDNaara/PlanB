@@ -33,7 +33,10 @@ function App() {
           path="/eventlist"
           element={<EventList events={allEvents} setEvents={setAllEvents} />}
         />
-        <Route path="/eventcalendar" element={<EventCalender />} />
+        <Route
+          path="/eventcalendar"
+          element={<EventCalender events={allEvents} />}
+        />
         <Route path="/eventdetails/:eventId" element={<EventDetails />} />
         <Route
           path="/createevent"
