@@ -23,7 +23,7 @@ const Footer = () => {
           <AnimatedEventlyLogo />
           <div>
             <p className="font-evently-brand text-xl leading-none text-evently-text transition duration-300 group-hover:text-evently-primary">
-              Evently
+              PlanB
             </p>
             <p className="mt-1 text-xs text-evently-muted">
               Mehr erleben. Weniger suchen.
@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
 
         <p className="text-xs leading-5 text-evently-muted sm:text-right">
-          © {currentYear} Evently · Niko, Muju &amp; Marlin
+          © {currentYear} PlanB · Niko, Muju &amp; Marlin
           <span className="block">Alle Rechte vorbehalten.</span>
         </p>
       </div>

@@ -20,4 +20,26 @@ const createEvent = (event, token) => {
   });
 };
 
-export { fetchEvents, createEvent, fetchUpcomingEvents, fetchEventById };
+const updateEvent = (id, event, token) => {
+  return apiRequest(`/events/${id}`, {
+    method: "PUT",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+    body: JSON.stringify(event),
+  });
+};
+
+const deleteEvent = (id, token) => {
+  return apiRequest(`/events/${id}`, {
+    method: "DELETE",
+    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+  });
+};
+
+export {
+  fetchEvents,
+  createEvent,
+  updateEvent,
+  deleteEvent,
+  fetchUpcomingEvents,
+  fetchEventById,
+};

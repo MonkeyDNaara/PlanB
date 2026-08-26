@@ -40,7 +40,9 @@ const CreateEvent = () => {
 
     try {
       const createdEvent = await createEvent(payload, getToken());
-      navigate(createdEvent?.id ? `/eventdetails/${createdEvent.id}` : "/eventlist");
+      navigate(
+        createdEvent?.id ? `/eventdetails/${createdEvent.id}` : "/eventlist",
+      );
     } catch (submitError) {
       setError(
         submitError instanceof Error
@@ -78,7 +80,10 @@ const CreateEvent = () => {
 
           <form className="mt-9 space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label className="text-sm font-bold text-evently-text" htmlFor="event-title">
+              <label
+                className="text-sm font-bold text-evently-text"
+                htmlFor="event-title"
+              >
                 Eventname
               </label>
               <input
@@ -97,7 +102,10 @@ const CreateEvent = () => {
 
             <div>
               <div className="flex items-center justify-between gap-4">
-                <label className="text-sm font-bold text-evently-text" htmlFor="event-description">
+                <label
+                  className="text-sm font-bold text-evently-text"
+                  htmlFor="event-description"
+                >
                   Beschreibung
                 </label>
                 <span className="text-xs text-evently-muted">
@@ -118,7 +126,10 @@ const CreateEvent = () => {
 
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label className="text-sm font-bold text-evently-text" htmlFor="event-date">
+                <label
+                  className="text-sm font-bold text-evently-text"
+                  htmlFor="event-date"
+                >
                   Datum und Uhrzeit
                 </label>
                 <input
@@ -133,7 +144,10 @@ const CreateEvent = () => {
               </div>
 
               <div>
-                <label className="text-sm font-bold text-evently-text" htmlFor="event-location">
+                <label
+                  className="text-sm font-bold text-evently-text"
+                  htmlFor="event-location"
+                >
                   Veranstaltungsort
                 </label>
                 <input
@@ -153,11 +167,16 @@ const CreateEvent = () => {
             <details className="rounded-2xl border border-evently-border bg-evently-bg-secondary/60 p-4 open:bg-evently-surface">
               <summary className="cursor-pointer text-sm font-bold text-evently-text marker:text-evently-primary">
                 Genaue Koordinaten hinzufügen
-                <span className="ml-2 font-normal text-evently-muted">optional</span>
+                <span className="ml-2 font-normal text-evently-muted">
+                  optional
+                </span>
               </summary>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="text-xs font-bold text-evently-text-secondary" htmlFor="event-latitude">
+                  <label
+                    className="text-xs font-bold text-evently-text-secondary"
+                    htmlFor="event-latitude"
+                  >
                     Breitengrad
                   </label>
                   <input
@@ -175,7 +194,10 @@ const CreateEvent = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-bold text-evently-text-secondary" htmlFor="event-longitude">
+                  <label
+                    className="text-xs font-bold text-evently-text-secondary"
+                    htmlFor="event-longitude"
+                  >
                     Längengrad
                   </label>
                   <input
@@ -244,7 +266,7 @@ const CreateEvent = () => {
               </span>
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-evently-primary">
-                  Evently Tipp
+                  PlanB Tipp
                 </p>
                 <p className="mt-2 text-sm font-bold leading-6 text-evently-text">
                   Beschreibe nicht nur, was passiert – sondern warum man dabei

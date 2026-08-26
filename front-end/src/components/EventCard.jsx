@@ -28,7 +28,8 @@ const EventCard = ({ event }) => {
     "Uhrzeit folgt";
 
   const accentIndex =
-    Math.abs(Number(id) || String(title ?? "Evently").length) % CARD_ACCENTS.length;
+    Math.abs(Number(id) || String(title ?? "Evently").length) %
+    CARD_ACCENTS.length;
   const accent = CARD_ACCENTS[accentIndex];
 
   return (
@@ -42,7 +43,10 @@ const EventCard = ({ event }) => {
       aria-label={`${title || "Event"} ansehen`}
     >
       <article className="relative flex h-full min-h-[360px] flex-col overflow-hidden rounded-[1.75rem] border border-evently-border bg-evently-surface shadow-[0_18px_55px_rgba(15,8,40,0.1)] transition duration-300 group-hover:-translate-y-1.5 group-hover:border-[var(--event-accent)] group-hover:shadow-[0_25px_70px_var(--event-accent-soft)]">
-        <div className="relative h-44 overflow-hidden bg-evently-bg-secondary" aria-hidden="true">
+        <div
+          className="relative h-44 overflow-hidden bg-evently-bg-secondary"
+          aria-hidden="true"
+        >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,var(--event-accent-soft),transparent_32%),radial-gradient(circle_at_82%_78%,rgba(34,211,238,0.16),transparent_30%)]" />
           <div className="absolute -right-8 -top-12 h-40 w-40 rotate-12 rounded-[2.5rem] border border-[var(--event-accent)]/20 bg-evently-surface/50 shadow-[0_0_55px_var(--event-accent-soft)] backdrop-blur-xl transition duration-500 group-hover:rotate-[22deg] group-hover:scale-105" />
           <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
@@ -82,7 +86,10 @@ const EventCard = ({ event }) => {
 
           <div className="mt-auto flex items-center justify-between border-t border-evently-border pt-5 text-sm font-bold text-evently-text">
             <span>Event ansehen</span>
-            <span className="text-xl text-[var(--event-accent)] transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+            <span
+              className="text-xl text-[var(--event-accent)] transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
               →
             </span>
           </div>

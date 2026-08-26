@@ -32,7 +32,9 @@ const Header = ({ isPremium = false }) => {
             className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-evently-border bg-white/[0.02] text-evently-text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:border-evently-primary/60 hover:bg-evently-primary-soft hover:text-evently-text hover:shadow-[0_0_22px_var(--evently-primary-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-evently-primary/60 md:hidden"
             aria-expanded={mobileOpen}
             aria-controls="evently-mobile-navigation"
-            aria-label={mobileOpen ? "Navigation schließen" : "Navigation öffnen"}
+            aria-label={
+              mobileOpen ? "Navigation schließen" : "Navigation öffnen"
+            }
           >
             <svg
               className="h-5 w-5"
@@ -67,7 +69,7 @@ const Header = ({ isPremium = false }) => {
           >
             <AnimatedEventlyLogo size="sm" premium={isPremium} />
             <span className="truncate font-evently-brand text-2xl font-normal tracking-[0.03em]">
-              Evently
+              PlanB
             </span>
             <span
               title={
@@ -87,7 +89,10 @@ const Header = ({ isPremium = false }) => {
         </div>
 
         <div className="flex items-center gap-2">
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Hauptnavigation">
+          <nav
+            className="hidden items-center gap-1 md:flex"
+            aria-label="Hauptnavigation"
+          >
             {navigation.map((item) => (
               <NavLink key={item.to} to={item.to} className={navLinkClass}>
                 {item.label}
