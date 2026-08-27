@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import EventCard from "../components/EventCard";
 import EmptyState from "../components/ui/EmptyState";
+import { fetchEvents } from "../utils/events";
 
 //To translate the calender-date string into js-date-format
 const toDateKey = (value) => {
@@ -19,10 +20,18 @@ const toDateKey = (value) => {
   return `${year}-${month}-${day}`;
 };
 
-const EventCalender = ({ events }) => {
+const EventCalender = () => {
   const [date, setDate] = useState(new Date());
+  const [events, setEvents] = useState({ results: [] });
+
+  useEffect(() => {
+    fetchEvents(1, 1000)
+      .then(setEvents)
+      .catch((error) => console.error("Error fetching events:", error));
+  }, []);
+
   const selectedDate = toDateKey(date);
-  const eventList = events?.results ?? [];
+  const eventList = events.results;
   const eventsForSelectedDate = eventList.filter(
     (event) => toDateKey(event.date) === selectedDate,
   );
