@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
+import premiumCrowdSound from "../../assets/audio/premium-jubel-applaus.mp3";
 import { PREMIUM_UNLOCK_EVENT } from "../../hooks/useEventSelection";
-
-const CELEBRATION_DURATION = 2;
 
 const LASER_COLORS = [
   "#ff2bd6",
@@ -36,86 +35,19 @@ const CONFETTI_PIECES = Array.from({ length: 34 }, (_, index) => ({
 }));
 
 const playPremiumCrowd = () => {
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-
-  if (!AudioContext) return;
-
   try {
-    const audioContext = new AudioContext();
-    if (audioContext.state === "suspended") {
-      void audioContext.resume();
+    const crowdAudio = new Audio(premiumCrowdSound);
+    crowdAudio.preload = "auto";
+    crowdAudio.volume = 0.9;
+
+    const playPromise = crowdAudio.play();
+    if (playPromise) {
+      void playPromise.catch(() => {
+        // Der Browser kann Audio blockieren, wenn kein direkter Klick vorausging.
+      });
     }
-    const sampleRate = audioContext.sampleRate;
-    const buffer = audioContext.createBuffer(
-      1,
-      sampleRate * CELEBRATION_DURATION,
-      sampleRate,
-    );
-    const samples = buffer.getChannelData(0);
-
-    for (let index = 0; index < samples.length; index += 1) {
-      const time = index / sampleRate;
-      const applausePulse = Math.pow(
-        Math.max(0, Math.sin(time * Math.PI * (18 + Math.sin(time * 9) * 3))),
-        14,
-      );
-      const crowdSwell = Math.sin(Math.min(1, time * 4) * Math.PI * 0.5);
-      samples[index] =
-        (Math.random() * 2 - 1) *
-        (0.16 + applausePulse * 0.74) *
-        crowdSwell *
-        Math.max(0, 1 - time / (CELEBRATION_DURATION + 0.2));
-    }
-
-    const crowdSource = audioContext.createBufferSource();
-    const crowdFilter = audioContext.createBiquadFilter();
-    const crowdGain = audioContext.createGain();
-
-    crowdSource.buffer = buffer;
-    crowdFilter.type = "bandpass";
-    crowdFilter.frequency.value = 1450;
-    crowdFilter.Q.value = 0.65;
-    crowdGain.gain.setValueAtTime(0.0001, audioContext.currentTime);
-    crowdGain.gain.exponentialRampToValueAtTime(
-      0.62,
-      audioContext.currentTime + 0.08,
-    );
-    crowdGain.gain.exponentialRampToValueAtTime(
-      0.0001,
-      audioContext.currentTime + CELEBRATION_DURATION,
-    );
-
-    crowdSource.connect(crowdFilter);
-    crowdFilter.connect(crowdGain);
-    crowdGain.connect(audioContext.destination);
-    crowdSource.start();
-    crowdSource.stop(audioContext.currentTime + CELEBRATION_DURATION);
-
-    [392, 440, 523.25, 659.25].forEach((frequency, index) => {
-      const voice = audioContext.createOscillator();
-      const voiceGain = audioContext.createGain();
-      const voiceStart = audioContext.currentTime + 0.08 + index * 0.11;
-
-      voice.type = "triangle";
-      voice.frequency.setValueAtTime(frequency, voiceStart);
-      voice.frequency.exponentialRampToValueAtTime(
-        frequency * 1.42,
-        voiceStart + 0.48,
-      );
-      voiceGain.gain.setValueAtTime(0.0001, voiceStart);
-      voiceGain.gain.exponentialRampToValueAtTime(0.018, voiceStart + 0.08);
-      voiceGain.gain.exponentialRampToValueAtTime(0.0001, voiceStart + 0.72);
-      voice.connect(voiceGain);
-      voiceGain.connect(audioContext.destination);
-      voice.start(voiceStart);
-      voice.stop(voiceStart + 0.75);
-    });
-
-    window.setTimeout(() => {
-      void audioContext.close();
-    }, 2200);
   } catch {
-    // Browsers may block sound before the first direct user interaction.
+    // Die Animation funktioniert auch auf Browsern ohne Audio-Unterstützung.
   }
 };
 
@@ -136,8 +68,7 @@ const PremiumCelebration = ({ active = false }) => {
   }, []);
 
   useEffect(() => {
-    const soundWasNotStartedByTheClick =
-      Date.now() - lastPlayedAt.current > 500;
+    const soundWasNotStartedByTheClick = Date.now() - lastPlayedAt.current > 500;
 
     if (active && soundWasNotStartedByTheClick) {
       playPremiumCrowd();
@@ -192,12 +123,10 @@ const PremiumCelebration = ({ active = false }) => {
         ))}
       </div>
 
-      <div className="premium-unlocked absolute left-1/2 top-24 -translate-x-1/2 text-center">
-        <span className="block text-[0.65rem] font-bold uppercase tracking-[0.42em] text-amber-200">
-          Drei Erlebnisse gewählt
-        </span>
-        <strong className="mt-2 block font-evently-brand text-4xl font-normal text-amber-100 sm:text-5xl">
-          Premium freigeschaltet
+      <div className="premium-unlocked" aria-hidden="true">
+        <span className="premium-unlocked-star">★</span>
+        <strong className="premium-unlocked-label">
+          Premium
         </strong>
       </div>
     </div>

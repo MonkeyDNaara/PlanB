@@ -1,13 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PremiumAtmosphere from "../components/ui/PremiumAtmosphere";
 import PremiumCelebration from "../components/ui/PremiumCelebration";
+import { ThemeContext } from "../contexts/ThemeContext";
 import useEventSelection from "../hooks/useEventSelection";
 
 const MainLayout = ({ isPremium = false }) => {
+  const { theme, setTheme } = use(ThemeContext);
   const { isPremium: hasPremiumSelection, selectedCount } =
     useEventSelection();
   const previousSelectedCount = useRef(selectedCount);
@@ -22,25 +24,22 @@ const MainLayout = ({ isPremium = false }) => {
       previousSelectedCount.current < 3 && selectedCount === 3;
     previousSelectedCount.current = selectedCount;
 
-    if (!premiumWasJustUnlocked) return undefined;
+    if (!premiumWasJustUnlocked) return;
+
+    if (theme === "light") setTheme("dark");
 
     setCelebrationActive(true);
+  }, [selectedCount, setTheme, theme]);
+
+  useEffect(() => {
+    if (!celebrationActive) return undefined;
+
     const celebrationTimer = window.setTimeout(() => {
       setCelebrationActive(false);
     }, 2000);
 
     return () => window.clearTimeout(celebrationTimer);
-  }, [selectedCount]);
-
-  useEffect(() => {
-    if (!isPremiumPreview) return undefined;
-
-    const previewTimer = window.setTimeout(() => {
-      setCelebrationActive(false);
-    }, 2000);
-
-    return () => window.clearTimeout(previewTimer);
-  }, [isPremiumPreview]);
+  }, [celebrationActive]);
 
   return (
     <div
