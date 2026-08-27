@@ -321,15 +321,15 @@ const EventCalender = ({ events }) => {
                             {formatEventDate(parsedDate)} · {formatEventTime(parsedDate)}
                           </p>
                           {isSelected && (
-                            <span className="rounded-full bg-amber-400/15 px-2 py-1 text-[0.6rem] font-black uppercase tracking-wider text-amber-300">
+                            <span className="evently-upcoming-selected-badge rounded-full px-2 py-1 text-[0.6rem] font-black uppercase tracking-wider">
                               ✓ Ausgewählt
                             </span>
                           )}
                         </div>
-                        <h3 className="mt-2 text-lg font-black leading-tight text-white">
+                        <h3 className="evently-upcoming-card-title mt-2 text-lg font-black leading-tight">
                           {event.title || "Unbenanntes Event"}
                         </h3>
-                        <p className="mt-2 line-clamp-1 text-sm text-slate-400">
+                        <p className="evently-upcoming-card-location mt-2 line-clamp-1 text-sm">
                           {event.location || "Ort wird bekannt gegeben"}
                         </p>
                       </div>
@@ -338,7 +338,7 @@ const EventCalender = ({ events }) => {
                     <div className="mt-4 grid grid-cols-[1fr_auto] gap-2">
                       <NavLink
                         to={`/eventdetails/${event.id}`}
-                        className="inline-flex min-h-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 text-sm font-bold text-white transition hover:border-violet-300/40 hover:bg-violet-500/15"
+                        className="evently-upcoming-view-button inline-flex min-h-10 items-center justify-center rounded-xl border px-3 text-sm font-bold transition"
                       >
                         Ansehen
                       </NavLink>
@@ -347,10 +347,10 @@ const EventCalender = ({ events }) => {
                         onClick={() => toggleEventSelection(String(event.id))}
                         disabled={selectionLimitReached}
                         aria-pressed={isSelected}
-                        className={`min-h-10 rounded-xl border px-3 text-sm font-black transition disabled:cursor-not-allowed disabled:opacity-40 ${
+                        className={`evently-upcoming-select-button min-h-10 rounded-xl border px-3 text-sm font-black transition disabled:cursor-not-allowed disabled:opacity-40 ${
                           isSelected
-                            ? "border-amber-300/55 bg-amber-400/15 text-amber-300"
-                            : "border-violet-300/25 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20"
+                            ? "evently-upcoming-select-button--selected"
+                            : "evently-upcoming-select-button--default"
                         }`}
                       >
                         {isSelected ? "✓ Gewählt" : "+ Auswählen"}

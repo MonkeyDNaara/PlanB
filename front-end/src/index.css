@@ -131,133 +131,14 @@
     z-index: 10;
   }
 
-  .evently-honeycomb {
-    background: linear-gradient(
-      112deg,
-      #ff2bd6 0%,
-      #9b5cff 30%,
-      #4f46e5 53%,
-      #22d3ee 76%,
-      #8b5cf6 100%
-    );
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      background-color 1200ms ease,
-      filter 1200ms ease,
-      opacity 700ms ease,
-      visibility 700ms ease;
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='208' viewBox='0 0 360 208'%3E%3Cg fill='none' stroke='white' stroke-width='1.5'%3E%3Cpath d='M60 0h120l60 104-60 104H60L0 104Z'/%3E%3Cpath d='M240-104h120L420 0l-60 104H240L180 0Z'/%3E%3Cpath d='M240 104h120l60 104-60 104H240l-60-104Z'/%3E%3C/g%3E%3C/svg%3E");
-    -webkit-mask-position: center top;
-    -webkit-mask-repeat: repeat;
-    -webkit-mask-size: 1440px 832px;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='208' viewBox='0 0 360 208'%3E%3Cg fill='none' stroke='white' stroke-width='1.5'%3E%3Cpath d='M60 0h120l60 104-60 104H60L0 104Z'/%3E%3Cpath d='M240-104h120L420 0l-60 104H240L180 0Z'/%3E%3Cpath d='M240 104h120l60 104-60 104H240l-60-104Z'/%3E%3C/g%3E%3C/svg%3E");
-    mask-position: center top;
-    mask-repeat: repeat;
-    mask-size: 1440px 832px;
-    filter:
-      drop-shadow(0 0 3px rgba(255, 43, 214, 0.9))
-      drop-shadow(0 0 11px rgba(91, 70, 255, 0.78))
-      drop-shadow(0 0 24px rgba(34, 211, 238, 0.35));
-  }
 
-  .evently-honeycomb-depth {
-    background: #010105;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 700ms ease,
-      visibility 700ms ease;
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='208' viewBox='0 0 360 208'%3E%3Cg fill='none' stroke='white' stroke-width='24'%3E%3Cpath d='M60 0h120l60 104-60 104H60L0 104Z'/%3E%3Cpath d='M240-104h120L420 0l-60 104H240L180 0Z'/%3E%3Cpath d='M240 104h120l60 104-60 104H240l-60-104Z'/%3E%3C/g%3E%3C/svg%3E");
-    -webkit-mask-position: center top;
-    -webkit-mask-repeat: repeat;
-    -webkit-mask-size: 1440px 832px;
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='208' viewBox='0 0 360 208'%3E%3Cg fill='none' stroke='white' stroke-width='24'%3E%3Cpath d='M60 0h120l60 104-60 104H60L0 104Z'/%3E%3Cpath d='M240-104h120L420 0l-60 104H240L180 0Z'/%3E%3Cpath d='M240 104h120l60 104-60 104H240l-60-104Z'/%3E%3C/g%3E%3C/svg%3E");
-    mask-position: center top;
-    mask-repeat: repeat;
-    mask-size: 1440px 832px;
-    filter:
-      drop-shadow(8px 10px 8px rgba(0, 0, 0, 0.95))
-      drop-shadow(-5px -5px 6px rgba(89, 66, 150, 0.18));
-  }
 
-  .theme-dark .evently-honeycomb-depth {
-    opacity: 0.96;
-    visibility: visible;
-  }
 
-  .theme-dark .evently-honeycomb {
-    opacity: 0.78;
-    visibility: visible;
-  }
 
-  .theme-dark .evently-premium .evently-honeycomb {
-    background: linear-gradient(112deg, #f59e0b, #fff3a3 38%, #facc15 62%, #ff9f0a);
-    opacity: 1;
-    filter:
-      drop-shadow(0 0 4px rgba(255, 251, 210, 0.98)) drop-shadow(0 0 13px rgba(255, 215, 64, 0.92))
-      drop-shadow(0 0 30px rgba(245, 158, 11, 0.68));
-  }
 
-  .premium-atmosphere {
-    background:
-      radial-gradient(circle at 18% 20%, rgba(67, 22, 118, 0.36), transparent 42%),
-      radial-gradient(circle at 82% 78%, rgba(4, 94, 116, 0.25), transparent 38%),
-      linear-gradient(135deg, rgba(2, 1, 6, 0.78), rgba(9, 4, 28, 0.7) 40%, rgba(2, 21, 28, 0.72));
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 1200ms ease,
-      visibility 1200ms ease;
-  }
 
-  .theme-dark .evently-premium .premium-atmosphere {
-    opacity: 1;
-    visibility: visible;
-  }
 
-  .premium-stars {
-    background-image:
-      radial-gradient(circle, rgba(255, 234, 166, 0.7) 0 1px, transparent 1.6px),
-      radial-gradient(circle, rgba(125, 211, 252, 0.55) 0 1px, transparent 1.7px);
-    background-position:
-      0 0,
-      37px 53px;
-    background-size:
-      91px 91px,
-      137px 137px;
-    opacity: 0.28;
-    animation: evently-premium-stars 18s linear infinite;
-  }
 
-  .premium-aurora {
-    filter: blur(85px);
-    opacity: 0.42;
-    mix-blend-mode: screen;
-    animation: evently-premium-aurora 14s ease-in-out infinite alternate;
-  }
-
-  .premium-aurora-violet {
-    background: rgba(124, 58, 237, 0.72);
-  }
-
-  .premium-aurora-cyan {
-    background: rgba(6, 182, 212, 0.58);
-    animation-delay: -5s;
-    animation-duration: 17s;
-  }
-
-  .premium-aurora-gold {
-    background: rgba(245, 158, 11, 0.34);
-    animation-delay: -9s;
-    animation-duration: 20s;
-  }
-
-  .premium-gold-horizon {
-    background: linear-gradient(90deg, transparent, rgba(250, 204, 21, 0.8), transparent);
-    box-shadow: 0 0 22px rgba(245, 158, 11, 0.42);
-    opacity: 0.45;
-  }
 
   .planb-space-scene {
     opacity: 0;
@@ -273,7 +154,7 @@
     visibility: visible;
   }
 
-  /* Im Light Mode ist die Kugel vollständig inaktiv. */
+  /* Sphere animations run in dark mode only. */
   .planb-honeyball,
   .planb-honeyball-reflection-frame,
   .planb-honeyball-reflection {
@@ -387,7 +268,7 @@
       drop-shadow(0 0 52px rgba(250, 204, 21, 0.16));
   }
 
-  /* Dezenter äußerer Schein für beide Kugelvarianten */
+  /* Sphere glow */
   .theme-dark .planb-honeyball {
     filter:
       drop-shadow(0 0 46px rgba(168, 85, 247, 0.22))
@@ -447,11 +328,6 @@
   }
 }
 
-@keyframes evently-premium-stars {
-  to {
-    transform: translate3d(34px, 24px, 0);
-  }
-}
 
 @media (max-width: 640px) {
   .planb-honeyball {
@@ -476,21 +352,9 @@
   }
 }
 
-@keyframes evently-premium-aurora {
-  from {
-    transform: translate3d(-4%, -2%, 0) scale(0.92);
-  }
-  to {
-    transform: translate3d(8%, 7%, 0) scale(1.12);
-  }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .premium-stars,
-  .premium-aurora {
-    animation: none;
-  }
-}
+
+
 
 @layer components {
   .premium-celebration {
@@ -659,4 +523,247 @@
 @keyframes evently-premium-unlocked-reduced {
   0%, 100% { opacity: 0; }
   12%, 88% { opacity: 1; }
+}
+
+
+
+/* =========================================================
+   EventDetails – Light Mode weiß / lila wie Kalender
+   ========================================================= */
+
+html:not(.theme-dark) .evently-event-details-card {
+  border-color: rgba(124, 58, 237, 0.32) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
+  box-shadow:
+    0 22px 60px rgba(45, 30, 75, 0.12),
+    0 0 0 1px rgba(124, 58, 237, 0.04) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-glow {
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(139, 92, 246, 0.10),
+      transparent 40%
+    ) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-toolbar {
+  border-color: rgba(124, 58, 237, 0.14) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-back {
+  color: #5b21b6 !important;
+  border-color: rgba(124, 58, 237, 0.26) !important;
+  background: rgba(245, 241, 255, 0.86) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-back:hover {
+  color: #4c1d95 !important;
+  border-color: rgba(124, 58, 237, 0.52) !important;
+  background: #ede9fe !important;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.12);
+}
+
+html:not(.theme-dark) .evently-event-details-badge {
+  color: #6d28d9 !important;
+  border-color: rgba(124, 58, 237, 0.28) !important;
+  background: rgba(245, 241, 255, 0.92) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-title {
+  color: #171a22 !important;
+}
+
+html:not(.theme-dark) .evently-event-details-info,
+html:not(.theme-dark) .evently-event-details-description {
+  border-color: rgba(124, 58, 237, 0.18) !important;
+  background: rgba(250, 248, 255, 0.92) !important;
+  box-shadow: 0 8px 22px rgba(39, 28, 68, 0.045);
+}
+
+html:not(.theme-dark) .evently-event-details-label,
+html:not(.theme-dark) .evently-event-details-description-title {
+  color: #7c3aed !important;
+}
+
+html:not(.theme-dark) .evently-event-details-value {
+  color: #171a22 !important;
+}
+
+html:not(.theme-dark) .evently-event-details-description-text {
+  color: #566071 !important;
+}
+
+
+/* =========================================================
+   PlanB Light Mode – City / Event Hintergrund
+   ========================================================= */
+
+.planb-light-city-background {
+  opacity: 1;
+  visibility: visible;
+  background-image: var(--planb-light-city-background);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  transition:
+    opacity 700ms ease,
+    visibility 700ms ease;
+}
+
+.theme-dark .planb-light-city-background {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 640px) {
+  .planb-light-city-background {
+    background-position: 50% bottom;
+    background-size: auto 100%;
+  }
+}
+
+/* =========================================================
+   Dark Mode – großer zentraler Honeyball
+   ========================================================= */
+
+/* Dark mode atmosphere */
+
+/* Dark mode background */
+.theme-dark .planb-space-scene {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Space backdrop */
+.theme-dark .planb-space-backdrop {
+  background-image: var(--planb-space-background);
+  background-repeat: no-repeat;
+  background-size: 112%;
+  background-position: 48% 50%;
+
+  filter:
+    brightness(1.08)
+    contrast(1.08)
+    saturate(1.24);
+
+  animation: planb-space-final-drift 95s ease-in-out infinite alternate;
+}
+
+/* Background shading */
+.theme-dark .planb-space-shade {
+  opacity: 1;
+  background:
+    linear-gradient(
+      rgba(1, 1, 8, 0.08),
+      rgba(1, 1, 8, 0.14)
+    ),
+    radial-gradient(
+      circle at center,
+      transparent 24%,
+      rgba(1, 1, 8, 0.08) 64%,
+      rgba(1, 1, 8, 0.26) 100%
+    );
+}
+
+.theme-dark .planb-space-vignette {
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 42%,
+      rgba(0, 0, 0, 0.12) 72%,
+      rgba(0, 0, 0, 0.26) 100%
+    );
+}
+
+/* Keep route backgrounds transparent in dark mode. */
+.theme-dark .evently-shell > main,
+.theme-dark .evently-shell > main > main,
+.theme-dark .evently-shell > main > .bg-evently-bg,
+.theme-dark .evently-shell > main > main.bg-evently-bg {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Honeycomb sphere */
+.theme-dark .planb-honeyball {
+  width: min(175vmin, 126rem);
+  opacity: 0.88;
+  animation: planb-honeyball-turn 150s linear infinite;
+
+  filter:
+    brightness(0.82)
+    contrast(1.06)
+    saturate(1.02)
+    drop-shadow(0 0 24px rgba(168, 85, 247, 0.12));
+}
+
+.theme-dark .planb-honeyball-violet {
+  opacity: 0.94;
+  filter:
+    brightness(0.86)
+    contrast(1.05)
+    saturate(1.04)
+    drop-shadow(0 0 20px rgba(168, 85, 247, 0.14));
+}
+
+.theme-dark .planb-honeyball-reflection {
+  opacity: 0.15;
+}
+
+/* Premium state */
+.theme-dark .evently-premium .planb-honeyball-violet {
+  opacity: 0;
+}
+
+.theme-dark .evently-premium .planb-honeyball-gold {
+  opacity: 1;
+
+  filter:
+    brightness(1.12)
+    contrast(1.07)
+    saturate(1.10)
+    drop-shadow(0 0 38px rgba(250, 204, 21, 0.16));
+}
+
+/* Shooting stars */
+.theme-dark .planb-space-meteors {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Header and footer glass effect */
+.theme-dark .evently-shell > header,
+.theme-dark .evently-shell > footer {
+  background: rgba(3, 2, 12, 0.32);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Slow background drift */
+@keyframes planb-space-final-drift {
+  from {
+    background-position: 46% 48%;
+    transform: scale(1.06) translate3d(-0.6%, -0.3%, 0);
+  }
+
+  to {
+    background-position: 54% 52%;
+    transform: scale(1.09) translate3d(0.6%, 0.5%, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-dark .planb-honeyball {
+    width: 190vmax;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-dark .planb-space-backdrop,
+  .theme-dark .planb-honeyball,
+  .theme-dark .planb-space-meteor {
+    animation: none !important;
+  }
 }

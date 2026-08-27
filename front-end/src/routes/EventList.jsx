@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
+import { hasRealEventArtwork } from "../utils/eventArtwork";
 import EmptyState from "../components/ui/EmptyState";
 import { fetchEvents } from "../utils/events";
 
 const EventList = () => {
   const [events, setEvents] = useState({ results: [] });
   const [isLoading, setIsLoading] = useState(false);
-  const eventList = events.results;
+  const eventList = [...events.results].sort(
+    (a, b) => Number(hasRealEventArtwork(b)) - Number(hasRealEventArtwork(a)),
+  );
 
   useEffect(() => {
-    fetchEvents().then(setEvents);
+    fetchEvents(1, 20).then(setEvents);
   }, []);
 
   const handleShowMore = async () => {
     setIsLoading(true);
-    const nextPage = await fetchEvents(events.currentPage + 1);
+    const nextPage = await fetchEvents(events.currentPage + 1, 20);
     setEvents((previous) => ({
       ...nextPage,
       results: [...previous.results, ...nextPage.results],
@@ -23,7 +26,7 @@ const EventList = () => {
   };
 
   return (
-    <main className="relative isolate min-h-[calc(100vh-9rem)] overflow-hidden bg-evently-bg px-5 py-14 text-evently-text sm:px-8 lg:py-20">
+    <main className="relative isolate min-h-[calc(100vh-9rem)] overflow-hidden px-5 py-14 text-evently-text sm:px-8 lg:py-20">
       <div
         className="pointer-events-none absolute -left-28 top-16 -z-10 h-80 w-80 rounded-full bg-evently-primary/15 blur-3xl"
         aria-hidden="true"

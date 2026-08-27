@@ -542,3 +542,95 @@ html:not(.theme-dark) .evently-upcoming-card--default:hover {
     0 0 0 1px rgba(124, 58, 237, 0.08),
     0 12px 26px rgba(39, 28, 68, 0.07);
 }
+
+/* =========================================================
+   Evently – rechte Event-Karten: besserer Kontrast
+   ========================================================= */
+
+.evently-upcoming-card-title {
+  color: #ffffff;
+}
+
+.evently-upcoming-card-location {
+  color: #94a3b8;
+}
+
+.evently-upcoming-selected-badge {
+  color: #fcd34d;
+  background: rgba(251, 191, 36, 0.15);
+}
+
+.evently-upcoming-view-button {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.evently-upcoming-view-button:hover {
+  border-color: rgba(196, 181, 253, 0.45);
+  background: rgba(124, 58, 237, 0.16);
+}
+
+.evently-upcoming-select-button--selected {
+  color: #fcd34d;
+  border-color: rgba(252, 211, 77, 0.55);
+  background: rgba(251, 191, 36, 0.15);
+}
+
+.evently-upcoming-select-button--default {
+  color: #ddd6fe;
+  border-color: rgba(196, 181, 253, 0.28);
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.evently-upcoming-select-button--default:hover {
+  background: rgba(124, 58, 237, 0.22);
+}
+
+/* Light Mode */
+
+html:not(.theme-dark) .evently-upcoming-card-title {
+  color: #171a22;
+}
+
+html:not(.theme-dark) .evently-upcoming-card-location {
+  color: #687386;
+}
+
+html:not(.theme-dark) .evently-upcoming-selected-badge {
+  color: #a16207;
+  background: #fff4cc;
+  border: 1px solid rgba(245, 158, 11, 0.22);
+}
+
+html:not(.theme-dark) .evently-upcoming-view-button {
+  color: #5b21b6;
+  border-color: rgba(124, 58, 237, 0.28);
+  background: rgba(245, 241, 255, 0.8);
+}
+
+html:not(.theme-dark) .evently-upcoming-view-button:hover {
+  color: #4c1d95;
+  border-color: rgba(124, 58, 237, 0.55);
+  background: #eee8ff;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.14);
+}
+
+html:not(.theme-dark) .evently-upcoming-select-button--default {
+  color: #6d28d9;
+  border-color: rgba(124, 58, 237, 0.32);
+  background: #f5f1ff;
+}
+
+html:not(.theme-dark) .evently-upcoming-select-button--default:hover {
+  color: #4c1d95;
+  border-color: rgba(124, 58, 237, 0.58);
+  background: #ede9fe;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.15);
+}
+
+html:not(.theme-dark) .evently-upcoming-select-button--selected {
+  color: #a16207;
+  border-color: rgba(245, 158, 11, 0.52);
+  background: #fff7dd;
+}

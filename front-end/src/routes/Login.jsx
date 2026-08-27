@@ -36,7 +36,7 @@ const Login = () => {
   };
   if (isAuthenticated() === true)
     return (
-      <main className="relative isolate flex min-h-[calc(100vh-9rem)] items-center justify-center overflow-hidden bg-evently-bg px-5 py-16 text-evently-text sm:px-8">
+      <main className="relative isolate flex min-h-[calc(100vh-9rem)] items-center justify-center overflow-hidden px-5 py-16 text-evently-text sm:px-8">
         <div
           className="pointer-events-none absolute -left-28 top-6 -z-10 h-80 w-80 rounded-full bg-evently-primary/15 blur-3xl"
           aria-hidden="true"
@@ -71,7 +71,7 @@ const Login = () => {
     );
   else
     return (
-      <main className="relative isolate flex min-h-[calc(100vh-9rem)] items-center justify-center overflow-hidden bg-evently-bg px-5 py-12 text-evently-text sm:px-8 sm:py-16">
+      <main className="relative isolate flex min-h-[calc(100vh-9rem)] items-center justify-center overflow-hidden px-5 py-12 text-evently-text sm:px-8 sm:py-16">
         <div
           className="pointer-events-none absolute -left-28 top-10 -z-10 h-80 w-80 rounded-full bg-evently-primary/15 blur-3xl"
           aria-hidden="true"
