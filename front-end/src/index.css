@@ -15,10 +15,10 @@
 }
 
 :root.theme-dark {
-  --evently-bg: #050608;
-  --evently-bg-secondary: #0b0e16;
-  --evently-surface: #10141e;
-  --evently-surface-elevated: #151b27;
+  --evently-bg: rgba(5, 6, 8, 0.86);
+  --evently-bg-secondary: rgba(11, 14, 22, 0.9);
+  --evently-surface: rgba(16, 20, 30, 0.91);
+  --evently-surface-elevated: rgba(21, 27, 39, 0.94);
   --evently-text: #f7f8fc;
   --evently-text-secondary: #b3bac7;
   --evently-muted: #7e8798;
@@ -70,5 +70,700 @@
   button,
   input {
     font: inherit;
+  }
+
+  button:not(:disabled),
+  a[href],
+  summary,
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  /* Dezenter Light-Mode-Hintergrund mit großen Waben */
+  .evently-shell {
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(124, 92, 255, 0.12), transparent 34rem),
+      radial-gradient(circle at 88% 74%, rgba(6, 182, 212, 0.1), transparent 38rem),
+      linear-gradient(145deg, #fbfbff 0%, #f6f7fb 54%, #f1f7fa 100%);
+  }
+
+
+
+  .theme-dark .evently-shell {
+    background-image: none;
+  }
+
+
+
+  /*
+   * Im Light Mode darf die jeweilige Route den globalen
+   * Waben-/Gradient-Hintergrund der Shell nicht verdecken.
+   */
+  .evently-shell > main > .bg-evently-bg {
+    background-color: transparent !important;
+  }
+
+  .theme-dark .evently-shell > main > .bg-evently-bg {
+    background-color: var(--evently-bg) !important;
+  }
+
+  .theme-dark .evently-premium {
+    --evently-bg: rgba(3, 2, 12, 0.82);
+    --evently-bg-secondary: rgba(10, 7, 28, 0.82);
+    --evently-surface: rgba(13, 12, 29, 0.82);
+    --evently-surface-elevated: rgba(20, 17, 39, 0.9);
+    --evently-text: #fffdf5;
+    --evently-text-secondary: #d8d2e8;
+    --evently-muted: #9f97b4;
+    --evently-border: rgba(250, 204, 21, 0.14);
+    --evently-primary: #9b6cff;
+    --evently-primary-soft: rgba(155, 108, 255, 0.2);
+  }
+
+  .evently-shell > footer {
+    z-index: 10;
+  }
+
+
+
+
+
+
+
+
+
+
+  .planb-space-scene {
+    opacity: 0;
+    visibility: hidden;
+    background: #020108;
+    transition:
+      opacity 900ms ease,
+      visibility 900ms ease;
+  }
+
+  .theme-dark .planb-space-scene {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Sphere animations run in dark mode only. */
+  .planb-honeyball,
+  .planb-honeyball-reflection-frame,
+  .planb-honeyball-reflection {
+    animation: none;
+  }
+
+  .theme-dark .planb-honeyball {
+    animation: planb-honeyball-turn 150s linear infinite;
+  }
+
+  .theme-dark .planb-honeyball-reflection-frame {
+    animation: planb-honeyball-reflection-counterturn 150s linear infinite;
+  }
+
+  .theme-dark .planb-honeyball-reflection {
+    animation: planb-honeyball-reflection-drift 18s ease-in-out infinite alternate;
+  }
+
+  .theme-dark .evently-shell > header,
+  .theme-dark .evently-shell > footer {
+    background: transparent;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .planb-space-backdrop {
+    background-image: var(--planb-space-background);
+    background-position: center;
+    background-size: cover;
+    filter: saturate(1.2) contrast(1.12) brightness(0.88);
+    transform: scale(1.04);
+  }
+
+  .planb-space-shade {
+    background:
+      linear-gradient(rgba(1, 1, 8, 0.1), rgba(1, 1, 8, 0.3)),
+      radial-gradient(circle at center, transparent 20%, rgba(1, 1, 8, 0.12) 62%, rgba(1, 1, 8, 0.48) 100%);
+  }
+
+  .planb-honeyball {
+    width: min(132vmin, 96rem);
+    aspect-ratio: 1;
+    opacity: 0.96;
+    animation: planb-honeyball-turn 150s linear infinite;
+    filter:
+      drop-shadow(0 0 42px rgba(167, 100, 255, 0.46))
+      drop-shadow(0 0 110px rgba(124, 58, 237, 0.24));
+    transition:
+      filter 1400ms ease,
+      opacity 900ms ease;
+    will-change: transform;
+  }
+
+  .planb-honeyball-image {
+    transition:
+      opacity 1400ms ease,
+      filter 1400ms ease;
+  }
+
+  .planb-honeyball-reflection-frame {
+    border-radius: 50%;
+    animation: planb-honeyball-reflection-counterturn 150s linear infinite;
+    will-change: transform;
+  }
+
+  .planb-honeyball-reflection {
+    overflow: hidden;
+    background-image: var(--planb-reflection-background);
+    background-position: 28% 45%;
+    background-size: 165%;
+    opacity: 0.26;
+    mix-blend-mode: screen;
+    filter: saturate(1.45) contrast(1.16) brightness(1.12);
+    -webkit-mask-image: radial-gradient(circle, #000 0 70%, rgba(0, 0, 0, 0.9) 84%, transparent 100%);
+    mask-image: radial-gradient(circle, #000 0 70%, rgba(0, 0, 0, 0.9) 84%, transparent 100%);
+    animation: planb-honeyball-reflection-drift 18s ease-in-out infinite alternate;
+    will-change: background-position, opacity;
+  }
+
+  .theme-dark .evently-premium .planb-honeyball-reflection {
+    opacity: 0.32;
+  }
+
+  .planb-honeyball-violet {
+    opacity: 1;
+    filter: brightness(1.3) contrast(1.1) saturate(1.25)
+      drop-shadow(0 0 18px rgba(224, 192, 255, 0.64))
+      drop-shadow(0 0 58px rgba(168, 85, 247, 0.38));
+  }
+
+  .planb-honeyball-gold {
+    opacity: 0;
+    filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0));
+  }
+
+  .theme-dark .evently-premium .planb-honeyball {
+    opacity: 0.98;
+    filter:
+      drop-shadow(0 0 58px rgba(255, 232, 120, 0.22))
+      drop-shadow(0 0 130px rgba(245, 158, 11, 0.12));
+  }
+
+  .theme-dark .evently-premium .planb-honeyball-violet {
+    opacity: 0;
+  }
+
+  .theme-dark .evently-premium .planb-honeyball-gold {
+    opacity: 1;
+    filter: brightness(1.2) contrast(1.1) saturate(1.15)
+      drop-shadow(0 0 52px rgba(250, 204, 21, 0.16));
+  }
+
+  /* Sphere glow */
+  .theme-dark .planb-honeyball {
+    filter:
+      drop-shadow(0 0 46px rgba(168, 85, 247, 0.22))
+      drop-shadow(0 0 110px rgba(124, 58, 237, 0.1));
+  }
+
+  .theme-dark .planb-honeyball-violet {
+    filter: brightness(1.25) contrast(1.08) saturate(1.18)
+      drop-shadow(0 0 32px rgba(168, 85, 247, 0.16));
+  }
+
+  .theme-dark .evently-premium .planb-honeyball {
+    filter:
+      drop-shadow(0 0 50px rgba(250, 204, 21, 0.18))
+      drop-shadow(0 0 120px rgba(245, 158, 11, 0.08));
+  }
+
+  .theme-dark .evently-premium .planb-honeyball-gold {
+    filter: brightness(1.16) contrast(1.08) saturate(1.1)
+      drop-shadow(0 0 38px rgba(250, 204, 21, 0.12));
+  }
+
+  .planb-space-vignette {
+    background:
+      linear-gradient(to bottom, rgba(1, 1, 7, 0.2), transparent 18%, transparent 80%, rgba(1, 1, 7, 0.4)),
+      radial-gradient(circle at center, transparent 38%, rgba(1, 1, 8, 0.24) 100%);
+  }
+}
+
+@keyframes planb-honeyball-turn {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes planb-honeyball-reflection-counterturn {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes planb-honeyball-reflection-drift {
+  from {
+    background-position: 24% 42%;
+  }
+
+  to {
+    background-position: 72% 58%;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .planb-honeyball {
+    width: 135vmax;
+    opacity: 0.88;
+  }
+
+  .planb-honeyball-reflection {
+    opacity: 0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planb-honeyball {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+
+  .planb-honeyball-reflection-frame,
+  .planb-honeyball-reflection {
+    animation: none;
+  }
+}
+
+
+
+
+
+@layer components {
+  .premium-celebration {
+    isolation: isolate;
+  }
+
+  .premium-celebration-flash {
+    background:
+      radial-gradient(circle at 50% 8%, rgba(254, 240, 138, 0.52), transparent 42%),
+      radial-gradient(circle at 18% 48%, rgba(255, 43, 214, 0.22), transparent 34%),
+      radial-gradient(circle at 82% 52%, rgba(34, 211, 238, 0.2), transparent 36%);
+    mix-blend-mode: screen;
+    animation: evently-premium-flash 2000ms ease-out both;
+  }
+
+  .premium-laser-burst {
+    left: var(--laser-left);
+    top: -22vh;
+    height: 155vh;
+    width: 2px;
+    transform-origin: top center;
+    background: linear-gradient(to bottom, transparent, white 8%, var(--laser-color) 42%, transparent 92%);
+    box-shadow:
+      0 0 4px white,
+      0 0 11px var(--laser-color),
+      0 0 28px var(--laser-color);
+    filter: saturate(1.45);
+    mix-blend-mode: screen;
+    animation: evently-premium-laser-burst var(--laser-duration) linear var(--laser-delay) infinite alternate;
+  }
+
+  .premium-laser-burst-bottom {
+    top: auto;
+    bottom: -22vh;
+    transform-origin: bottom center;
+  }
+
+  .premium-confetti-piece {
+    left: var(--confetti-left);
+    width: 0.48rem;
+    height: 0.82rem;
+    border-radius: 0.16rem;
+    background: var(--confetti-color);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--confetti-color) 70%, transparent);
+    animation: evently-premium-confetti var(--confetti-duration) cubic-bezier(0.2, 0.72, 0.3, 1) var(--confetti-delay) both;
+  }
+
+  .premium-unlocked {
+    position: absolute;
+    left: 50%;
+    top: clamp(5.5rem, 12vh, 7.5rem);
+    display: inline-flex;
+    width: max-content;
+    max-width: calc(100vw - 2rem);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.45rem, 2vw, 0.8rem);
+    padding: clamp(0.55rem, 2vw, 0.8rem) clamp(0.9rem, 4vw, 1.5rem);
+    overflow: hidden;
+    border: 1px solid rgba(253, 224, 71, 0.62);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(20, 12, 4, 0.94), rgba(60, 36, 3, 0.86));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 24px rgba(245, 158, 11, 0.5),
+      0 0 60px rgba(245, 158, 11, 0.28);
+    color: #fef3c7;
+    white-space: nowrap;
+    backdrop-filter: blur(14px);
+    animation: evently-premium-unlocked 2000ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .premium-unlocked-star {
+    flex: 0 0 auto;
+    color: #facc15;
+    font-size: clamp(1rem, 4.5vw, 1.65rem);
+    line-height: 1;
+    text-shadow:
+      0 0 8px rgba(250, 204, 21, 0.9),
+      0 0 18px rgba(245, 158, 11, 0.7);
+  }
+
+  .premium-unlocked-label {
+    min-width: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1.25rem, 7vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: clamp(0.08em, 1vw, 0.18em);
+    text-transform: uppercase;
+    text-shadow: 0 0 18px rgba(251, 191, 36, 0.52);
+  }
+
+  .event-card-light-sweep {
+    transition: opacity 180ms ease;
+  }
+
+  .group:hover .event-card-light-sweep {
+    animation: planb-card-light-sweep 1050ms ease-out both;
+  }
+}
+
+@keyframes evently-premium-flash {
+  0% { opacity: 0; }
+  14% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes evently-premium-laser-burst {
+  0% {
+    opacity: 0.16;
+    transform: rotate(var(--laser-angle-from)) scaleX(0.65);
+  }
+  38% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.42;
+    transform: rotate(var(--laser-angle-to)) scaleX(1.25);
+  }
+}
+
+@keyframes evently-premium-confetti {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -2rem, 0) rotate(0deg);
+  }
+  10% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--confetti-drift), 105vh, 0) rotate(var(--confetti-rotation));
+  }
+}
+
+@keyframes evently-premium-unlocked {
+  0% { opacity: 0; transform: translate(-50%, -2rem) scale(0.82); }
+  16%, 72% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -1rem) scale(0.96); }
+}
+
+@keyframes planb-card-light-sweep {
+  from {
+    transform: translateX(-30%) skewX(-12deg);
+  }
+  to {
+    transform: translateX(520%) skewX(-12deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-celebration-flash,
+  .premium-laser-burst,
+  .premium-confetti-piece {
+    display: none;
+  }
+
+  .premium-unlocked {
+    animation: evently-premium-unlocked-reduced 2000ms ease both;
+  }
+
+  .group:hover .event-card-light-sweep {
+    animation: none;
+  }
+}
+
+@keyframes evently-premium-unlocked-reduced {
+  0%, 100% { opacity: 0; }
+  12%, 88% { opacity: 1; }
+}
+
+
+
+/* =========================================================
+   EventDetails – Light Mode weiß / lila wie Kalender
+   ========================================================= */
+
+html:not(.theme-dark) .evently-event-details-card {
+  border-color: rgba(124, 58, 237, 0.32) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
+  box-shadow:
+    0 22px 60px rgba(45, 30, 75, 0.12),
+    0 0 0 1px rgba(124, 58, 237, 0.04) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-glow {
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(139, 92, 246, 0.10),
+      transparent 40%
+    ) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-toolbar {
+  border-color: rgba(124, 58, 237, 0.14) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-back {
+  color: #5b21b6 !important;
+  border-color: rgba(124, 58, 237, 0.26) !important;
+  background: rgba(245, 241, 255, 0.86) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-back:hover {
+  color: #4c1d95 !important;
+  border-color: rgba(124, 58, 237, 0.52) !important;
+  background: #ede9fe !important;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.12);
+}
+
+html:not(.theme-dark) .evently-event-details-badge {
+  color: #6d28d9 !important;
+  border-color: rgba(124, 58, 237, 0.28) !important;
+  background: rgba(245, 241, 255, 0.92) !important;
+}
+
+html:not(.theme-dark) .evently-event-details-title {
+  color: #171a22 !important;
+}
+
+html:not(.theme-dark) .evently-event-details-info,
+html:not(.theme-dark) .evently-event-details-description {
+  border-color: rgba(124, 58, 237, 0.18) !important;
+  background: rgba(250, 248, 255, 0.92) !important;
+  box-shadow: 0 8px 22px rgba(39, 28, 68, 0.045);
+}
+
+html:not(.theme-dark) .evently-event-details-label,
+html:not(.theme-dark) .evently-event-details-description-title {
+  color: #7c3aed !important;
+}
+
+html:not(.theme-dark) .evently-event-details-value {
+  color: #171a22 !important;
+}
+
+html:not(.theme-dark) .evently-event-details-description-text {
+  color: #566071 !important;
+}
+
+
+/* =========================================================
+   PlanB Light Mode – City / Event Hintergrund
+   ========================================================= */
+
+.planb-light-city-background {
+  opacity: 1;
+  visibility: visible;
+  background-image: var(--planb-light-city-background);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  transition:
+    opacity 700ms ease,
+    visibility 700ms ease;
+}
+
+.theme-dark .planb-light-city-background {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 640px) {
+  .planb-light-city-background {
+    background-position: 50% bottom;
+    background-size: auto 100%;
+  }
+}
+
+/* =========================================================
+   Dark Mode – großer zentraler Honeyball
+   ========================================================= */
+
+/* Dark mode atmosphere */
+
+/* Dark mode background */
+.theme-dark .planb-space-scene {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Space backdrop */
+.theme-dark .planb-space-backdrop {
+  background-image: var(--planb-space-background);
+  background-repeat: no-repeat;
+  background-size: 112%;
+  background-position: 48% 50%;
+
+  filter:
+    brightness(1.08)
+    contrast(1.08)
+    saturate(1.24);
+
+  animation: planb-space-final-drift 95s ease-in-out infinite alternate;
+}
+
+/* Background shading */
+.theme-dark .planb-space-shade {
+  opacity: 1;
+  background:
+    linear-gradient(
+      rgba(1, 1, 8, 0.08),
+      rgba(1, 1, 8, 0.14)
+    ),
+    radial-gradient(
+      circle at center,
+      transparent 24%,
+      rgba(1, 1, 8, 0.08) 64%,
+      rgba(1, 1, 8, 0.26) 100%
+    );
+}
+
+.theme-dark .planb-space-vignette {
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 42%,
+      rgba(0, 0, 0, 0.12) 72%,
+      rgba(0, 0, 0, 0.26) 100%
+    );
+}
+
+/* Keep route backgrounds transparent in dark mode. */
+.theme-dark .evently-shell > main,
+.theme-dark .evently-shell > main > main,
+.theme-dark .evently-shell > main > .bg-evently-bg,
+.theme-dark .evently-shell > main > main.bg-evently-bg {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Honeycomb sphere */
+.theme-dark .planb-honeyball {
+  width: min(175vmin, 126rem);
+  opacity: 0.88;
+  animation: planb-honeyball-turn 150s linear infinite;
+
+  filter:
+    brightness(0.82)
+    contrast(1.06)
+    saturate(1.02)
+    drop-shadow(0 0 24px rgba(168, 85, 247, 0.12));
+}
+
+.theme-dark .planb-honeyball-violet {
+  opacity: 0.94;
+  filter:
+    brightness(0.86)
+    contrast(1.05)
+    saturate(1.04)
+    drop-shadow(0 0 20px rgba(168, 85, 247, 0.14));
+}
+
+.theme-dark .planb-honeyball-reflection {
+  opacity: 0.15;
+}
+
+/* Premium state */
+.theme-dark .evently-premium .planb-honeyball-violet {
+  opacity: 0;
+}
+
+.theme-dark .evently-premium .planb-honeyball-gold {
+  opacity: 1;
+
+  filter:
+    brightness(1.12)
+    contrast(1.07)
+    saturate(1.10)
+    drop-shadow(0 0 38px rgba(250, 204, 21, 0.16));
+}
+
+/* Shooting stars */
+.theme-dark .planb-space-meteors {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Header and footer glass effect */
+.theme-dark .evently-shell > header,
+.theme-dark .evently-shell > footer {
+  background: rgba(3, 2, 12, 0.32);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Slow background drift */
+@keyframes planb-space-final-drift {
+  from {
+    background-position: 46% 48%;
+    transform: scale(1.06) translate3d(-0.6%, -0.3%, 0);
+  }
+
+  to {
+    background-position: 54% 52%;
+    transform: scale(1.09) translate3d(0.6%, 0.5%, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-dark .planb-honeyball {
+    width: 190vmax;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-dark .planb-space-backdrop,
+  .theme-dark .planb-honeyball,
+  .theme-dark .planb-space-meteor {
+    animation: none !important;
   }
 }

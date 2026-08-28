@@ -1,0 +1,194 @@
+[
+  {
+    "event": "Art Basel",
+    "status": "downloaded",
+    "local_file": "art-basel.jpg",
+    "commons_file": "File:ART FUSION BASEL 2020 – Exhibition poster (Honys Torres) 02.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "HonysTorresArt"
+  },
+  {
+    "event": "Athens Photo World",
+    "status": "downloaded",
+    "local_file": "athens-photo-world.jpg",
+    "commons_file": "File:Exhibition Hadrian and Athens Conversing with an Ideal World, from 28th November 2017, Archaeological Museum of Athens (31937331588).jpg",
+    "license": "CC BY-SA 2.0",
+    "author": "Carole Raddato  from FRANKFURT, Germany"
+  },
+  {
+    "event": "Bastille Day Paris",
+    "local_file": "bastille-day-paris.jpg",
+    "commons_file": "File:Eiffel Tower lit in red with fireworks on Bastille Day.jpg",
+    "author": "Lettucecup",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Eiffel_Tower_lit_in_red_with_fireworks_on_Bastille_Day.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Carnaval de Nice",
+    "local_file": "carnaval-de-nice.jpg",
+    "commons_file": "File:Carnival Nice.jpg",
+    "author": "Bain News Service",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Carnival_Nice.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "documenta Kassel",
+    "status": "downloaded",
+    "local_file": "documenta-kassel.jpg",
+    "commons_file": "File:2017-06-07 Documenta 14 Kassel by Olaf Kosinsky-26.jpg",
+    "license": "CC BY-SA 3.0 de",
+    "author": "Olaf Kosinsky"
+  },
+  {
+    "event": "Flow Festival Helsinki",
+    "local_file": "flow-festival-helsinki.jpg",
+    "commons_file": "File:Flow Festival in Suvilahti (Sörnäinen), Helsinki, Finland, 2023 August.jpg",
+    "author": "Katja Pyykkö",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Flow_Festival_in_Suvilahti_(Sörnäinen),_Helsinki,_Finland,_2023_August.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Frieze London",
+    "status": "downloaded",
+    "local_file": "frieze-london.jpg",
+    "commons_file": "File:Artist and musician Mira Calix at the Frieze art fair in London in 2016.jpg",
+    "license": "CC BY-SA 2.0",
+    "author": "Steve  Bowbrick"
+  },
+  {
+    "event": "Glastonbury Festival",
+    "local_file": "glastonbury-festival.jpg",
+    "commons_file": "File:The pyramid stage during Glastonbury Festival 2019 02.jpg",
+    "author": "Rodw",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_pyramid_stage_during_Glastonbury_Festival_2019_02.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "La Tomatina Buñol",
+    "local_file": "la-tomatina.jpg",
+    "commons_file": "File:TOMATINA.jpg",
+    "author": "Rmartinsanchez",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:TOMATINA.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Montreux Jazz Festival",
+    "local_file": "montreux-jazz-festival.jpg",
+    "commons_file": "File:General 2026 Montreux Jazz Festival.jpg",
+    "author": "EGilham",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:General_2026_Montreux_Jazz_Festival.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "NOS Alive",
+    "local_file": "nos-alive.jpg",
+    "commons_file": "File:Nos Alive (19607609069).jpg",
+    "author": "Chris",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nos_Alive_(19607609069).jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Øya Festival",
+    "local_file": "oya-festival.jpg",
+    "commons_file": "File:Chappell Roan at Øyafestivalen 2025.jpg",
+    "author": "Junefreund",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chappell_Roan_at_Øyafestivalen_2025.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Paris Photo",
+    "status": "downloaded",
+    "local_file": "paris-photo.jpg",
+    "commons_file": "File:Omar Victor Diop Paris Photo.jpg",
+    "license": "CC BY 2.0",
+    "author": "Ninara"
+  },
+  {
+    "event": "Primavera Sound Barcelona",
+    "local_file": "primavera-sound-barcelona.jpg",
+    "commons_file": "File:Primavera Sound, Barcelona, 2016.06.03 (28200751130).jpg",
+    "author": "deepskyobject",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Primavera_Sound,_Barcelona,_2016.06.03_(28200751130).jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Reykjavik Pride",
+    "local_file": "reykjavik-pride.jpg",
+    "commons_file": "File:Páll Oskar in Pride Parade, Reykjavik 2014.JPG",
+    "author": "Tanzania",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Páll_Oskar_in_Pride_Parade,_Reykjavik_2014.JPG",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Rock am Ring",
+    "local_file": "rock-am-ring.jpg",
+    "commons_file": "File:Festivalgelände - 2022155232829 2022-06-04 Rock am Ring - Sven - 1D X MK II - 0964 - AK8I3630.jpg",
+    "author": "Sven Mandel",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Festivalgelände_-_2022155232829_2022-06-04_Rock_am_Ring_-_Sven_-_1D_X_MK_II_-_0964_-_AK8I3630.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Roskilde Festival",
+    "local_file": "roskilde-festival.jpg",
+    "commons_file": "File:Orange Stage Roskilde Festival 2009 (3717060477).jpg",
+    "author": "Wouter Kiel",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Orange_Stage_Roskilde_Festival_2009_(3717060477).jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "San Fermín Running of the Bulls",
+    "local_file": "san-fermin.jpg",
+    "commons_file": "File:San Fermín - Pamplona.jpg",
+    "author": "Pablo Matamoros",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:San_Fermín_-_Pamplona.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "St. Patrick's Festival Dublin",
+    "local_file": "st-patricks-dublin.jpg",
+    "commons_file": "File:ST. PATRICK'S DAY PARADE IN DUBLIN - 17 MARCH 2019 -THE WEATHER WAS EXCELLENT--150143 (47353412322).jpg",
+    "author": "William Murphy",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:ST._PATRICK'S_DAY_PARADE_IN_DUBLIN_-_17_MARCH_2019_-THE_WEATHER_WAS_EXCELLENT--150143_(47353412322).jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Sziget Festival Budapest",
+    "local_file": "sziget-festival-budapest.jpg",
+    "commons_file": "File:Budapest Sziget01.jpg",
+    "author": "Lepeltier.ludovic",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Budapest_Sziget01.jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Tomorrowland",
+    "local_file": "tomorrowland.jpg",
+    "commons_file": "File:TomorrowLand - Boom Belgium (13914503685).jpg",
+    "author": "Global Stomping",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:TomorrowLand_-_Boom_Belgium_(13914503685).jpg",
+    "note": "Downloaded from Wikimedia Commons and resized by Commons thumbnail service."
+  },
+  {
+    "event": "Venice Biennale",
+    "status": "downloaded",
+    "local_file": "venice-biennale.jpg",
+    "commons_file": "File:2026 Venice Biennale In Minor Keys main exhibit in the Giardini 01.jpg",
+    "license": "CC BY-SA 4.0",
+    "author": "Jennifer 8. Lee/WikiPortraits"
+  }
+]

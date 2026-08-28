@@ -55,7 +55,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <main className="relative isolate flex flex-1 items-center justify-center overflow-hidden bg-evently-bg px-5 py-12 text-evently-text sm:px-8 sm:py-16 lg:py-20">
+    <main className="relative isolate flex flex-1 items-center justify-center overflow-hidden px-5 py-12 text-evently-text sm:px-8 sm:py-16 lg:py-20">
       <div
         className="pointer-events-none absolute -left-28 top-16 -z-10 h-80 w-80 rounded-full bg-evently-primary/15 blur-3xl"
         aria-hidden="true"
